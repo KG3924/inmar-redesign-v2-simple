@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In-Mar Systems | Marine Equipment for Extreme Conditions</title>
+  <meta name="description" content="In-Mar Systems supplies Wynn wipers, FFS fire fighting systems, Alu Design seating, Solar Solve shades, and Nijhuis pumps to U.S. Navy, USCG, and commercial fleets for over 45 years.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+    body { font-family: 'Inter', system_ui, sans-serif; }
+    .heading-font { font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif; font-weight: 600; letter-spacing: -0.025em; }
+    .hero-bg {
+      transition: background-image 1s ease-in-out;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: #0f172a; /* fallback dark */
+    }
+    .nav-link { transition: color 0.1s ease; }
+    .nav-link:hover { color: #0ea5e9; }
+    .simple-card { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+    .simple-card:hover { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); transform: translateY(-1px); }
+  </style>
+</head>
+<body class="bg-white text-slate-900">
+  <!-- Top bar -->
+  <div class="bg-slate-900 text-white text-xs py-1.5">
+    <div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems • (225) 430-9111</div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="bg-white border-b sticky top-0 z-50">
+    <div class="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-x-3">
+        <img src="assets/images/logos/inmarlogosmall.png" alt="In-Mar Systems logo - tugboat and tower icon" class="h-10 w-auto">
+        <div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div>
+      </a>
+      <div class="hidden md:flex gap-x-8 text-sm font-medium">
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="resources.html">Resources</a>
+        <a href="resources.html#dibbs" class="hover:text-sky-600">DIBBS</a>
+        <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" class="hover:text-sky-600">ShipServ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
+    </div>
+  </nav>
+
+  <!-- Hero with Slideshow as Background (using actual local hero images) -->
+  <div id="hero" class="hero-bg relative h-[520px] md:h-[620px] flex items-center bg-slate-900 text-white overflow-hidden"
+       style="background-image: url('assets/images/hero-slideshow/IMG_1353ss.PNG');">
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/40 to-slate-900/20"></div>
+    
+    <div class="max-w-5xl mx-auto px-6 relative z-10">
+      <div class="max-w-2xl">
+        <div class="uppercase tracking-[3px] text-xs font-semibold text-sky-400 mb-2">45+ YEARS • U.S. NAVY • USCG • COMMERCIAL FLEETS</div>
+        <h1 class="text-6xl md:text-7xl leading-none font-semibold tracking-tighter">In-Mar Systems</h1>
+        <p class="mt-4 text-2xl text-slate-200">Marine equipment for extreme conditions.</p>
+        
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="resources.html#dibbs" class="inline-flex items-center px-8 py-3.5 border border-white/70 text-white font-semibold rounded text-base hover:bg-white/10">DIBBS Quotes &amp; Solicitations</a>
+          <button onclick="openQuoteModal()" class="inline-flex items-center px-8 py-3.5 border border-white/70 text-white font-semibold rounded text-base hover:bg-white/10">Request Quote</button>
+        </div>
+        <div class="mt-3 text-xs text-slate-400">Click the background or <a href="gallery.html" class="underline hover:text-white">view full gallery (180+ photos)</a></div>
+      </div>
+    </div>
+
+    <!-- Subtle slideshow controls (optional, minimal) -->
+    <div class="absolute bottom-6 right-6 flex gap-2 z-20">
+      <button onclick="prevHeroSlide()" class="w-9 h-9 flex items-center justify-center border border-white/40 rounded-full text-white/80 hover:bg-white/10"><i class="fa-solid fa-chevron-left text-sm"></i></button>
+      <button onclick="nextHeroSlide()" class="w-9 h-9 flex items-center justify-center border border-white/40 rounded-full text-white/80 hover:bg-white/10"><i class="fa-solid fa-chevron-right text-sm"></i></button>
+    </div>
+  </div>
+
+  <!-- Simple Products Overview -->
+  <div class="max-w-5xl mx-auto px-6 pt-14 pb-8">
+    <div class="flex items-end justify-between mb-6">
+      <div>
+        <div class="text-sky-600 text-xs tracking-[2px] font-semibold">WHAT WE SUPPLY</div>
+        <h2 class="text-3xl font-semibold tracking-tight">Equipment trusted on the water.</h2>
+      </div>
+      <a href="products.html" class="text-sm font-medium text-sky-600 hover:underline">All products →</a>
+    </div>
+
+    <div class="grid md:grid-cols-5 gap-3">
+      <a href="products.html#wipers" class="simple-card block border p-5 rounded-xl hover:border-sky-200">
+        <div class="font-semibold">Wynn Marine Wipers</div>
+        <div class="text-sm text-slate-600 mt-1">Straight line, pantograph, controllers &amp; wash systems for clear visibility in any condition.</div>
+      </a>
+      <a href="products.html#ffs" class="simple-card block border p-5 rounded-xl hover:border-sky-200">
+        <div class="font-semibold">FFS Fire Fighting Systems</div>
+        <div class="text-sm text-slate-600 mt-1">Complete marine external fire fighting packages — monitors, pumps, foam for Fi-Fi class vessels.</div>
+      </a>
+      <a href="products.html#seating" class="simple-card block border p-5 rounded-xl hover:border-sky-200">
+        <div class="font-semibold">Alu Design Seating &amp; Rails</div>
+        <div class="text-sm text-slate-600 mt-1">Premium helm chairs, operator seating and deck rails. U.S. representative for Alu Design.</div>
+      </a>
+      <a href="products.html#shades" class="simple-card block border p-5 rounded-xl hover:border-sky-200">
+        <div class="font-semibold">Solar Solve Window Shades</div>
+        <div class="text-sm text-slate-600 mt-1">Anti-glare roller screens. 200,000+ installed on vessels worldwide.</div>
+      </a>
+      <a href="products.html#pumps" class="simple-card block border p-5 rounded-xl hover:border-sky-200">
+        <div class="font-semibold">Nijhuis Fire Pumps</div>
+        <div class="text-sm text-slate-600 mt-1">Centrifugal fire pumps and parts for marine and industrial applications.</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Window Data Submission Tool Teaser -->
+  <div class="bg-slate-50 border-y">
+    <div class="max-w-5xl mx-auto px-6 py-10">
+      <div class="flex flex-col md:flex-row md:items-center gap-6">
+        <div class="flex-1">
+          <div class="text-sky-600 text-xs tracking-[2px] font-semibold">FOR WIPER QUOTES</div>
+          <h3 class="text-2xl font-semibold tracking-tight mt-1">Window Data Submission Tool</h3>
+          <p class="mt-2 text-slate-600 max-w-md">Submit exact glass and mounting dimensions online. Replaces the old manual PDF datasheet. Fast, accurate, and part of your quote request.</p>
+        </div>
+        <div>
+          <a href="window-data-submission-tool.html" class="inline-block px-7 py-3 bg-slate-900 text-white font-semibold rounded text-sm hover:bg-black">Open Window Data Submission Tool →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIBBS Teaser -->
+  <div class="max-w-5xl mx-auto px-6 py-10">
+    <div class="flex flex-col md:flex-row md:items-center gap-6">
+      <div class="flex-1">
+        <div class="text-sky-600 text-xs tracking-[2px] font-semibold">GOVERNMENT &amp; PROCUREMENT</div>
+        <h3 class="text-2xl font-semibold tracking-tight mt-1">DIBBS Quotes &amp; Solicitations</h3>
+        <p class="mt-2 text-slate-600">Searchable and filterable list of current and recent government opportunities (NSNs). Many relate directly to wiper and marine equipment.</p>
+      </div>
+      <div>
+        <a href="resources.html#dibbs" class="inline-block px-7 py-3 border border-slate-300 font-semibold rounded text-sm hover:bg-slate-50">Browse DIBBS →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simple Trust / Real Photos -->
+  <div class="bg-slate-900 text-white">
+    <div class="max-w-5xl mx-auto px-6 py-10">
+      <div class="grid md:grid-cols-3 gap-8 text-sm">
+        <div>
+          <div class="text-4xl font-semibold tracking-tighter">45+</div>
+          <div class="text-slate-400">Years serving the marine industry</div>
+        </div>
+        <div>
+          <div class="text-4xl font-semibold tracking-tighter">U.S. Navy &amp; USCG</div>
+          <div class="text-slate-400">Trusted supplier with extensive reference lists</div>
+        </div>
+        <div>
+          <div class="text-4xl font-semibold tracking-tighter">Real Installations</div>
+          <div class="text-slate-400">See actual equipment in the field in our <a href="gallery.html" class="underline">photo gallery</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t py-8 text-xs text-slate-500">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row gap-y-2 md:items-center justify-between">
+      <div>In-Mar Systems, Inc. &amp; In-Mar Solutions, LLC • 3011 S. Ruby Ave, Gonzales, LA 70737 • (225) 430-9111</div>
+      <div class="flex gap-x-4">
+        <a href="resources.html" class="hover:text-slate-900">Resources</a>
+        <a href="contact.html" class="hover:text-slate-900">Contact</a>
+        <a href="https://www.inmarsystems.com/" target="_blank" class="hover:text-slate-900">Original site</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quote Modal (simple, functional) -->
+  <div id="quote-modal" onclick="if (event.target.id === 'quote-modal') closeQuoteModal()" class="hidden fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4">
+    <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-md rounded-2xl shadow-xl">
+      <div class="px-6 py-4 border-b flex justify-between items-center">
+        <div class="font-semibold">Request a Quote</div>
+        <button onclick="closeQuoteModal()" class="text-2xl leading-none text-slate-400 hover:text-slate-600">×</button>
+      </div>
+      <form onsubmit="handleQuoteSubmit(event)" class="p-6 space-y-4 text-sm">
+        <div class="grid grid-cols-2 gap-4">
+          <input name="firstName" required placeholder="First Name *" class="border px-4 py-2.5 rounded-xl">
+          <input name="lastName" required placeholder="Last Name *" class="border px-4 py-2.5 rounded-xl">
+        </div>
+        <input name="company" required placeholder="Company / Vessel *" class="border w-full px-4 py-2.5 rounded-xl">
+        <input name="email" required type="email" placeholder="Email *" class="border w-full px-4 py-2.5 rounded-xl">
+        <select name="interest" class="border w-full px-4 py-2.5 rounded-xl">
+          <option>Wynn Marine Wipers (use Window Data Tool)</option>
+          <option>FFS Fire Fighting Systems</option>
+          <option>Alu Design Seating &amp; Rails</option>
+          <option>Solar Solve Shades</option>
+          <option>Nijhuis Fire Pumps</option>
+          <option>DIBBS / Government</option>
+          <option>Multiple / Other</option>
+        </select>
+        <textarea name="details" rows="3" placeholder="Details, NSN, timeline, or other requirements..." class="border w-full px-4 py-2.5 rounded-xl"></textarea>
+        <div class="flex gap-3 pt-1">
+          <button type="button" onclick="closeQuoteModal()" class="flex-1 py-2.5 border rounded-xl">Cancel</button>
+          <button type="submit" class="flex-1 py-2.5 bg-slate-900 text-white font-semibold rounded-xl">Submit Request</button>
+        </div>
+        <p class="text-[10px] text-center text-slate-400">This is a demo. In production it would go to your team.</p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Tailwind
+    function initTailwind() {
+      document.documentElement.style.setProperty('--accent', '#0ea5e9');
+    }
+
+    // Mobile menu
+    function toggleMobileMenu() {
+      const m = document.getElementById('mobile-menu');
+      m.classList.toggle('hidden');
+    }
+
+    // Hero background slideshow (using the 18 curated photos as background)
+    const heroImages = [
+      "assets/images/hero-slideshow/IMG_1353ss.PNG",
+      "assets/images/hero-slideshow/IMG_1378ss.PNG",
+      "assets/images/hero-slideshow/IMG_1379ss.PNG",
+      "assets/images/hero-slideshow/IMG_1385ss.PNG",
+      "assets/images/hero-slideshow/IMG_1386ss.PNG",
+      "assets/images/hero-slideshow/IMG_1390ss.PNG",
+      "assets/images/hero-slideshow/IMG_1395ss.PNG",
+      "assets/images/hero-slideshow/IMG_1401ss.PNG",
+      "assets/images/hero-slideshow/IMG_1407ss.PNG",
+      "assets/images/hero-slideshow/IMG_1410ss.PNG",
+      "assets/images/hero-slideshow/IMG_1415ss.PNG",
+      "assets/images/hero-slideshow/IMG_1418ss.PNG",
+      "assets/images/hero-slideshow/IMG_1427ss.PNG",
+      "assets/images/hero-slideshow/IMG_1434ss.PNG",
+      "assets/images/hero-slideshow/IMG_1439ss.PNG",
+      "assets/images/hero-slideshow/IMG_1476ss.PNG",
+      "assets/images/hero-slideshow/IMG_1479ss.PNG",
+      "assets/images/hero-slideshow/IMG_1480ss.PNG"
+    ];
+    let currentHero = 0;
+    let heroInterval;
+
+    function setHeroBackground(index) {
+      const hero = document.getElementById('hero');
+      if (!hero) return;
+      hero.style.backgroundImage = `url('${heroImages[index]}')`;
+    }
+
+    function nextHeroSlide() {
+      currentHero = (currentHero + 1) % heroImages.length;
+      setHeroBackground(currentHero);
+    }
+
+    function prevHeroSlide() {
+      currentHero = (currentHero - 1 + heroImages.length) % heroImages.length;
+      setHeroBackground(currentHero);
+    }
+
+    function startHeroSlideshow() {
+      const hero = document.getElementById('hero');
+      if (!hero) return;
+
+      // Make the whole hero clickable to gallery
+      hero.style.cursor = 'pointer';
+      hero.addEventListener('click', (e) => {
+        // Don't trigger if clicking the arrow buttons
+        if (!e.target.closest('button')) {
+          window.location.href = 'gallery.html';
+        }
+      });
+
+      setHeroBackground(currentHero);
+      heroInterval = setInterval(nextHeroSlide, 4800);
+
+      // Pause on hover
+      hero.addEventListener('mouseenter', () => clearInterval(heroInterval));
+      hero.addEventListener('mouseleave', () => {
+        heroInterval = setInterval(nextHeroSlide, 4800);
+      });
+    }
+
+    // Quote modal
+    function openQuoteModal() {
+      const modal = document.getElementById('quote-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+    function closeQuoteModal() {
+      const modal = document.getElementById('quote-modal');
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+    function handleQuoteSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      form.innerHTML = `
+        <div class="p-8 text-center">
+          <i class="fa-solid fa-check-circle text-emerald-500 text-4xl"></i>
+          <div class="font-semibold mt-4">Thank you — request received.</div>
+          <p class="text-sm text-slate-600 mt-2">A member of the In-Mar team will contact you within one business day.</p>
+          <button onclick="closeQuoteModal()" class="mt-5 px-6 py-2 text-sm border rounded-xl">Close</button>
+        </div>
+      `;
+    }
+
+    // Keyboard for hero arrows (optional)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowRight') nextHeroSlide();
+      if (e.key === 'ArrowLeft') prevHeroSlide();
+    });
+
+    function init() {
+      initTailwind();
+      startHeroSlideshow();
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>

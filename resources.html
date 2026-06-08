@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources | News, DIBBS Quotes, Catalogs &amp; Data Sheets | In-Mar Systems</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system_ui, sans-serif; }
+    .heading-font { font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif; font-weight: 600; letter-spacing: -0.025em; }
+    .dibbs-row:hover { background: #f8fafc; }
+  </style>
+</head>
+<body class="bg-slate-50">
+  <div class="bg-slate-900 text-white text-xs py-1.5"><div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems • Resources &amp; News</div></div>
+  
+  <nav class="bg-white border-b sticky top-0 z-50">
+    <div class="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-x-3">
+        <img src="assets/images/logos/inmarlogosmall.png" alt="In-Mar Systems logo - tugboat and tower icon" class="h-10 w-auto">
+        <div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div>
+      </a>
+      <div class="hidden md:flex gap-x-8 text-sm font-medium">
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="resources.html" class="text-sky-600 font-semibold">Resources</a>
+        <a href="resources.html#dibbs" class="text-sky-600 font-semibold">DIBBS</a>
+        <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank">ShipServ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
+    </div>
+  </nav>
+
+  <div class="max-w-screen-2xl mx-auto px-6 pt-8">
+    <h1 class="text-3xl heading-font font-semibold tracking-tighter">Resources &amp; News</h1>
+    <p class="text-sm text-slate-600 max-w-md">Press releases, industry coverage, government solicitations (DIBBS), and downloadable catalogs &amp; data sheets.</p>
+  </div>
+
+  <!-- News Section -->
+  <div class="max-w-screen-2xl mx-auto px-6 pt-8">
+    <h2 class="font-semibold mb-3">News &amp; Press</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white border rounded-3xl p-5">
+        <div class="text-xs text-emerald-600 font-medium">PRESS RELEASE • APR 2026</div>
+        <div class="font-semibold mt-1 leading-tight">Preparing Gulf Fleets for Hurricane Season: Marine Equipment Built for Extreme Conditions</div>
+        <div class="text-sm mt-2 text-slate-600">In-Mar reinforces commitment to operators with rugged equipment proven in the harshest Gulf conditions. Quotes from President Glynn Grantham on real-world performance.</div>
+        <a href="https://www.inmarsystems.com/press-releases/gulf-fleet-hurricane-preparation-marine-equipment" target="_blank" class="text-xs mt-3 inline-block underline">Read full release on current site →</a>
+      </div>
+      <div class="bg-white border rounded-3xl p-5">
+        <div class="text-xs text-emerald-600 font-medium">PRESS RELEASE • FEB 2026</div>
+        <div class="font-semibold mt-1 leading-tight">Louisiana Company In-Mar Systems Expands Product Lines to Support U.S. Navy</div>
+        <div class="text-sm mt-2 text-slate-600">Commitment to expand offerings for the evolving needs of the U.S. Navy and broader U.S. maritime industrial base.</div>
+      </div>
+    </div>
+    <div class="mt-3 text-xs"><a href="https://www.inmarsystems.com/industry-news.html" target="_blank" class="underline">View more industry news coverage on the current site →</a></div>
+  </div>
+
+  <!-- DIBBS Interactive Table -->
+  <div class="max-w-screen-2xl mx-auto px-6 pt-10">
+    <div class="flex items-end justify-between mb-3">
+      <div>
+        <h2 class="font-semibold">DIBBS Quotes &amp; Solicitations</h2>
+        <div class="text-xs text-slate-500">Representative sample. Many NSNs relate to wiper and marine equipment. Verify current opportunities on official DIBBS.</div>
+      </div>
+      <div class="text-xs">Payment terms: <span class="font-medium">50% with order, balance prior to dispatch</span></div>
+    </div>
+
+    <div id="dibbs" class="bg-white border rounded-3xl p-4">
+      <!-- Controls -->
+      <div class="flex flex-col md:flex-row gap-3 mb-3">
+        <input id="dibbs-search" type="text" onkeyup="filterDIBBS()" placeholder="Search solicitation, NSN, or keyword..." 
+               class="flex-1 border border-slate-300 focus:border-sky-400 px-4 py-2 rounded-2xl text-sm">
+        <div class="flex gap-2 flex-wrap">
+          <button onclick="filterDIBBS('all')" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100 active-filter" data-filter="all">All</button>
+          <button onclick="filterDIBBS('2090')" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100" data-filter="2090">Wiper (2090)</button>
+          <button onclick="filterDIBBS('3030')" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100" data-filter="3030">Belts (3030)</button>
+          <button onclick="filterDIBBS('other')" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100" data-filter="other">Other</button>
+        </div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm" id="dibbs-table">
+          <thead>
+            <tr class="text-left border-b text-xs text-slate-500">
+              <th class="py-2 px-3 font-normal cursor-pointer" onclick="sortDIBBS(0)">Solicitation <i class="fa-solid fa-sort text-[10px]"></i></th>
+              <th class="py-2 px-3 font-normal cursor-pointer" onclick="sortDIBBS(1)">NSN <i class="fa-solid fa-sort text-[10px]"></i></th>
+              <th class="py-2 px-3 font-normal">Link</th>
+            </tr>
+          </thead>
+          <tbody id="dibbs-tbody" class="text-xs"></tbody>
+        </table>
+      </div>
+      <div class="text-[10px] text-slate-400 mt-2 px-1">Data as of early 2026 analysis. Not all solicitations are In-Mar products. Always confirm on DIBBS.</div>
+    </div>
+  </div>
+
+  <!-- ShipServ -->
+  <div class="max-w-screen-2xl mx-auto px-6 pt-8">
+    <h2 class="font-semibold mb-3">ShipServ</h2>
+    <div class="bg-white border rounded-3xl p-5 flex flex-col md:flex-row md:items-center gap-4">
+      <div class="flex-1">
+        <div class="font-semibold">In-Mar Solutions on ShipServ</div>
+        <div class="text-sm text-slate-600 mt-1">Access our full catalog and listings on the leading marine procurement platform.</div>
+      </div>
+      <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" 
+         class="inline-flex items-center gap-x-2 px-6 py-3 bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold rounded-2xl whitespace-nowrap">
+        View Catalog on ShipServ <i class="fa-solid fa-external-link-alt"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Downloads -->
+  <div class="max-w-screen-2xl mx-auto px-6 pt-8 pb-10">
+    <h2 class="font-semibold mb-3">Catalogs, Data Sheets &amp; References</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
+      <a href="assets/pdfs/products/seating/alu_catalog_-_2024.pdf" target="_blank" class="block bg-white border p-4 rounded-2xl hover:bg-slate-50">Alu Design 2024 Catalog (PDF)</a>
+      <a href="assets/pdfs/products/wipers/navy_and_uscg_reference_list_-_2024.pdf" target="_blank" class="block bg-white border p-4 rounded-2xl hover:bg-slate-50">Wynn Marine — U.S. Navy &amp; USCG Reference List 2024 (PDF)</a>
+      <a href="assets/pdfs/products/wipers/type_c___type_d.pdf" target="_blank" class="block bg-white border p-4 rounded-2xl hover:bg-slate-50">Wynn Type C &amp; D Straight Line Brochure (PDF)</a>
+      <a href="assets/pdfs/dibbs-quotes/2090-01-120-4507.pdf" target="_blank" class="block bg-white border p-4 rounded-2xl hover:bg-slate-50">Sample DIBBS NSN Spec Sheet (PDF)</a>
+      <span class="text-xs text-slate-400">Additional brochures and DIBBS sheets available in the assets/pdfs/ folders (organized by original site page).</span>
+    </div>
+  </div>
+
+  <footer class="text-xs px-6 py-4 max-w-screen-2xl mx-auto text-slate-500 border-t">Concept demo • PDFs link to public inmarsystems.com uploads</footer>
+
+  <!-- Quote Modal -->
+  <div id="quote-modal" onclick="if (event.target.id === 'quote-modal') closeQuoteModal()" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+    <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-md rounded-3xl p-5 shadow-2xl">
+      <div class="font-semibold mb-3">Quick Quote Request</div>
+      <form onsubmit="handleQuoteSubmit(event)" class="space-y-3 text-sm">
+        <input name="name" required placeholder="Name" class="w-full border p-2.5 rounded-2xl">
+        <input name="email" required type="email" placeholder="Email" class="w-full border p-2.5 rounded-2xl">
+        <select name="interest" class="w-full border p-2.5 rounded-2xl"><option>DIBBS / Government</option><option>Wipers</option><option>Fire Systems</option><option>Seating</option><option>Other</option></select>
+        <button class="w-full py-2.5 bg-sky-600 text-white rounded-2xl text-sm font-semibold">Submit (demo)</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // DIBBS data (representative sample). Enhanced for v2: added "product" tag for sorting/filtering by product (Wipers, Belts, etc.).
+    // Real solicitations should always be verified on the official DIBBS site.
+    let dibbsData = [
+      {sol: "SPE7M4-26-T-148M", nsn: "2090-01-120-4507", product: "Wipers", link: "images/pdfs/dibbs/2090-01-120-4507.pdf"},
+      {sol: "SPE7M4-26-T-131R", nsn: "2090-01-509-6704", product: "Wipers", link: "images/pdfs/dibbs/2090-01-509-6704.pdf"},
+      {sol: "SPE7M4-26-T-131N", nsn: "2090-01-506-0630", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-506-0630.pdf"},
+      {sol: "SPE7M4-26-T-134T", nsn: "2090-01-465-7137", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-465-7137.pdf"},
+      {sol: "SPE7L5-26-T-3642", nsn: "3030-01-464-7727", product: "Belts", link: "images/pdfs/dibbs/3030-01-464-7727.pdf"},
+      {sol: "SPE7M5-26-T-168V", nsn: "5999-99-435-3497", product: "Other", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/5999-99-435-3497.pdf"},
+      {sol: "SPE7L1-26-T-536D", nsn: "3030-01-614-6555", product: "Belts", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/3030-01-614-6555.pdf"},
+      {sol: "SPE7M4-26-T-085C", nsn: "2090-01-714-5608", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-714-5608_-_1.pdf"},
+      {sol: "SPE7M4-26-T-090C", nsn: "2090-01-572-9307", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-572-9307.pdf"},
+      {sol: "SPE7M4-26-T-089Z", nsn: "2090-01-514-8023", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-514-8023.pdf"},
+      {sol: "SPE7M4-26-T-078L", nsn: "2090-01-494-7227", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-494-7227.pdf"},
+      {sol: "SPE7M4-26-T-058A", nsn: "2090-01-560-0637", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-560-0637.pdf"},
+      {sol: "SPE7M4-26-T-056R", nsn: "2090-01-711-0786", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-711-0786.pdf"},
+      {sol: "SPE7M4-26-T-056P", nsn: "2090-01-718-1125", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-718-1125.pdf"},
+      {sol: "SPE7M4-26-T-050R", nsn: "2090-01-714-5609", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-714-5609.pdf"},
+      {sol: "SPE7M4-26-T-049E", nsn: "2090-01-714-5610", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-714-5610.pdf"},
+      {sol: "SPE7L1-26-T-454Z", nsn: "3030-01-520-8107", product: "Belts", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/3030-01-520-8107.pdf"},
+      {sol: "SPE7M4-26-T-035B", nsn: "2090-01-504-6237", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-504-6237.pdf"},
+      {sol: "SPE7M4-26-T-027M", nsn: "2090-01-640-7774", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-640-7774.pdf"},
+      {sol: "SPE7M4-26-T-009G", nsn: "2090-99-842-5481", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-99-842-5481.pdf"},
+    ];
+
+    let currentFilter = 'all';
+    let currentSort = { col: 0, dir: 1 };
+
+    function renderDIBBS(data) {
+      const tbody = document.getElementById('dibbs-tbody');
+      tbody.innerHTML = '';
+      data.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'border-b dibbs-row';
+        tr.innerHTML = `
+          <td class="py-2 px-3 font-medium">${item.sol}</td>
+          <td class="py-2 px-3 font-mono text-xs">${item.nsn}</td>
+          <td class="py-2 px-3"><a href="${item.link}" target="_blank" class="text-sky-600 hover:underline text-xs">View PDF <i class="fa-solid fa-external-link-alt text-[9px]"></i></a></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterDIBBS(type) {
+      currentFilter = type || 'all';
+      // update button styles
+      document.querySelectorAll('[data-filter]').forEach(b => {
+        b.classList.remove('bg-sky-600', 'text-white', 'border-sky-600');
+        b.classList.add('border');
+        if ((type === 'all' && b.dataset.filter === 'all') || b.dataset.filter === type) {
+          b.classList.add('bg-sky-600', 'text-white', 'border-sky-600');
+          b.classList.remove('border');
+        }
+      });
+
+      const searchVal = (document.getElementById('dibbs-search').value || '').toLowerCase();
+      let filtered = dibbsData;
+
+      if (type && type !== 'all') {
+        if (type === '2090') filtered = filtered.filter(d => d.nsn.startsWith('2090'));
+        else if (type === '3030') filtered = filtered.filter(d => d.nsn.startsWith('3030'));
+        else if (type === 'other') filtered = filtered.filter(d => !d.nsn.startsWith('2090') && !d.nsn.startsWith('3030'));
+      }
+      if (searchVal) {
+        filtered = filtered.filter(d => 
+          d.sol.toLowerCase().includes(searchVal) || 
+          d.nsn.toLowerCase().includes(searchVal)
+        );
+      }
+      renderDIBBS(filtered);
+    }
+
+    function sortDIBBS(col) {
+      currentSort.col = col;
+      currentSort.dir = currentSort.dir * -1;
+
+      const searchVal = (document.getElementById('dibbs-search').value || '').toLowerCase();
+      let data = [...dibbsData];
+
+      if (currentFilter === '2090') data = data.filter(d => d.nsn.startsWith('2090'));
+      else if (currentFilter === '3030') data = data.filter(d => d.nsn.startsWith('3030'));
+      else if (currentFilter === 'other') data = data.filter(d => !d.nsn.startsWith('2090') && !d.nsn.startsWith('3030'));
+
+      if (searchVal) data = data.filter(d => d.sol.toLowerCase().includes(searchVal) || d.nsn.toLowerCase().includes(searchVal));
+
+      data.sort((a, b) => {
+        let valA = col === 0 ? a.sol : a.nsn;
+        let valB = col === 0 ? b.sol : b.nsn;
+        if (valA < valB) return -1 * currentSort.dir;
+        if (valA > valB) return 1 * currentSort.dir;
+        return 0;
+      });
+      renderDIBBS(data);
+    }
+
+    function filterDIBBSOnSearch() {
+      filterDIBBS(currentFilter);
+    }
+
+    // Quote modal helpers (consistent)
+    function openQuoteModal() {
+      const m = document.getElementById('quote-modal');
+      m.classList.remove('hidden'); m.classList.add('flex');
+    }
+    function closeQuoteModal() {
+      const m = document.getElementById('quote-modal');
+      m.classList.remove('flex'); m.classList.add('hidden');
+    }
+    function handleQuoteSubmit(e) {
+      e.preventDefault();
+      e.target.innerHTML = `<div class="py-6 text-center"><i class="fa-solid fa-check-circle text-emerald-500 text-4xl"></i><div class="mt-2 font-semibold">Submitted (demo mode).</div></div>`;
+    }
+
+    function initDIBBS() {
+      renderDIBBS(dibbsData);
+      const search = document.getElementById('dibbs-search');
+      search.addEventListener('input', () => filterDIBBS(currentFilter));
+      
+      // default active filter
+      const allBtn = document.querySelector('[data-filter="all"]');
+      if (allBtn) allBtn.classList.add('bg-sky-600', 'text-white', 'border-sky-600');
+    }
+
+    window.onload = function() {
+      initDIBBS();
+    };
+  </script>
+</body>
+</html>

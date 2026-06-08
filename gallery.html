@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery | Real Installations | In-Mar Systems</title>
+  <meta name="description" content="Browse 180+ photos of In-Mar equipment in the field: wipers, fire monitors, vessels, seating and more.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+    body { font-family: 'Inter', system_ui, sans-serif; }
+    .heading-font { font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif; font-weight: 600; letter-spacing: -0.025em; }
+    .photo-card {
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background: #f8fafc;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: box-shadow 0.2s ease;
+    }
+    .photo-card:hover {
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+    .photo-card img {
+      transition: transform 0.3s ease;
+      display: block;
+      width: 100%;
+    }
+    .photo-card:hover img {
+      transform: scale(1.04);
+    }
+    .masonry {
+      column-count: 2;
+      column-gap: 0.75rem;
+    }
+    @media (min-width: 768px) {
+      .masonry { column-count: 3; }
+    }
+    @media (min-width: 1024px) {
+      .masonry { column-count: 4; }
+    }
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body class="bg-slate-50">
+  <!-- Top bar -->
+  <div class="bg-slate-900 text-white text-xs py-1.5">
+    <div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems • (225) 430-9111</div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="bg-white border-b sticky top-0 z-50">
+    <div class="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-x-3">
+        <img src="assets/images/logos/inmarlogosmall.png" alt="In-Mar Systems logo - tugboat and tower icon" class="h-10 w-auto">
+        <div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div>
+      </a>
+      <div class="hidden md:flex gap-x-8 text-sm font-medium">
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="gallery.html" class="text-sky-600 font-semibold">Gallery</a>
+        <a href="resources.html">Resources</a>
+        <a href="resources.html#dibbs" class="hover:text-sky-600">DIBBS</a>
+        <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" class="hover:text-sky-600">ShipServ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
+    </div>
+  </nav>
+
+  <div class="max-w-screen-2xl mx-auto px-6 pt-10 pb-6">
+    <div class="max-w-3xl">
+      <div class="uppercase tracking-[1.5px] text-xs font-semibold text-sky-600">REAL INSTALLATIONS</div>
+      <h1 class="text-4xl md:text-5xl heading-font font-semibold tracking-tighter mt-2">Photo Gallery</h1>
+      <p class="mt-3 text-lg text-slate-600">Wipers, fire monitors, vessels, seating, and equipment in the field. Organized by category.</p>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="max-w-screen-2xl mx-auto px-6 pb-6 sticky top-[57px] bg-slate-50 z-40 pt-2">
+    <div class="flex flex-wrap gap-2" id="filter-buttons">
+      <!-- JS populated -->
+    </div>
+    <div class="text-xs text-slate-500 mt-2" id="results-count"></div>
+  </div>
+
+  <!-- Clean Photo Grid (images only, no text) -->
+  <div class="max-w-screen-2xl mx-auto px-6 pb-16">
+    <div id="photo-grid" class="masonry">
+      <!-- JS populated clean thumbnails -->
+    </div>
+  </div>
+
+  <!-- Clean Lightbox (image only, no captions or titles) -->
+  <div id="lightbox" onclick="if (event.target.id === 'lightbox') closeLightbox()" class="hidden fixed inset-0 bg-black/95 z-[200] flex items-center justify-center p-4">
+    <div onclick="event.stopImmediatePropagation()" class="relative w-full max-w-6xl">
+      <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white/80 hover:text-white text-3xl leading-none">×</button>
+
+      <div class="bg-black rounded-xl overflow-hidden shadow-2xl">
+        <img id="lightbox-image" class="w-full max-h-[80vh] object-contain bg-black" alt="">
+      </div>
+
+      <div class="mt-4 flex items-center justify-between text-white">
+        <div class="flex-1"></div>
+        <div class="flex items-center gap-x-3">
+          <div id="lightbox-counter" class="text-sm text-white/70 tabular-nums mr-2"></div>
+          <button onclick="prevPhoto()" class="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white/10 transition">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button onclick="nextPhoto()" class="w-10 h-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white/10 transition">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-slate-900 text-slate-400 text-xs">
+    <div class="max-w-screen-2xl mx-auto px-6 py-6 text-center">
+      All photos are real installations of In-Mar supplied equipment.
+    </div>
+  </footer>
+
+  <script>
+    // ==========================================
+    // GALLERY DATA - NO CAPTIONS, CLEAN
+    // Populate this array with your photos.
+    // Use this terminal command in VS Code (in the project root):
+    // find images/gallery -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | grep -v "/other/" | sort | while read f; do
+    //   cat=$(basename "$(dirname "$f")")
+    //   echo "  { src: \"$f\", category: \"$cat\" },"
+    // done
+    //
+    // Paste the output below. Categories: wipers, fire-fighting, military, seating, vessels
+    // ==========================================
+
+    const photos = [
+      { src: "assets/images/gallery/fire-fighting/IMG_1344.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1345.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1362.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1363.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1368.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1380.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1385.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1386.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1390.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1393.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1396.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1399.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1404.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1410.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1411.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1412.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1415.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1416.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1418.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1419.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1423.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1440.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1456.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1458.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1473.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1478.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1501.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/fire-fighting/IMG_1503.PNG", category: "fire-fighting" },
+      { src: "assets/images/gallery/military/IMG_1355.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1364.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1366.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1377.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1388.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1405.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1406.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1408.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1413.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1424.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1425.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1427.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1428.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1429.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1430.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1431.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1437.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1439.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1441.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1450.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1463.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1470.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1475.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1479.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1480.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1481.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1482.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1483.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1484.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1488.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1489.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1491.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1492.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1493.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1498.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1504.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1505.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1506.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1507.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1508.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1509.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1514.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1515.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1517.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1518.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1519.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1520.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1522.PNG", category: "military" },
+      { src: "assets/images/gallery/military/IMG_1523.PNG", category: "military" },
+      { src: "assets/images/gallery/seating/IMG_1365.PNG", category: "seating" },
+      { src: "assets/images/gallery/seating/IMG_1382.PNG", category: "seating" },
+      { src: "assets/images/gallery/seating/IMG_1387.PNG", category: "seating" },
+      { src: "assets/images/gallery/seating/IMG_1414.PNG", category: "seating" },
+      { src: "assets/images/gallery/seating/IMG_1420.PNG", category: "seating" },
+      { src: "assets/images/gallery/seating/IMG_1421.PNG", category: "seating" },
+      { src: "assets/images/gallery/seating/IMG_1434.PNG", category: "seating" },
+      { src: "assets/images/gallery/seating/IMG_1438.PNG", category: "seating" },
+      { src: "assets/images/gallery/seating/IMG_1443.PNG", category: "seating" },
+      { src: "assets/images/gallery/seating/IMG_1445.PNG", category: "seating" },
+      { src: "assets/images/gallery/seating/IMG_1476.PNG", category: "seating" },
+      { src: "assets/images/gallery/vessels/IMG_1343.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1348.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1349.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1352.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1356.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1360.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1361.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1370-1.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1370.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1372-1.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1372.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1373.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1374.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1375.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1376.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1381.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1383.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1384.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1389.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1391.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1394.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1397.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1402.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1409.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1417.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1426.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1432.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1433.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1435.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1436.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1452.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1453.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1454.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1459.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1461.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1462.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1464.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1465.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1466.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1467.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1471.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1472.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1474.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1477.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1486.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1487.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1490.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1494.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1495.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1496.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1497.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1499.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1500.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1502.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1510.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1511.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1512.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1513.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1516.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1524.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1525.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1526.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1528.PNG", category: "vessels" },
+      { src: "assets/images/gallery/vessels/IMG_1529.PNG", category: "vessels" },
+      { src: "assets/images/gallery/wipers/IMG_1346.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1347.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1350.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1351.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1353.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1354.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1357.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1358.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1359.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1367.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1369.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1371.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1378.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1379.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1392.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1395.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1398.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1400.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1401.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1403.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1407.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1422.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1442.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1444.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1446.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1455.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1457.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1460.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1468.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1469.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1521.PNG", category: "wipers" },
+      { src: "assets/images/gallery/wipers/IMG_1527.PNG", category: "wipers" }
+    ];
+
+    const categoryOrder = ['All', 'wipers', 'fire-fighting', 'military', 'seating', 'vessels'];
+
+    let currentFiltered = [];
+    let currentIndex = 0;
+
+    function initFilters() {
+      const container = document.getElementById('filter-buttons');
+      container.innerHTML = '';
+      categoryOrder.forEach(cat => {
+        const btn = document.createElement('button');
+        let label = cat === 'All' ? 'All' : cat.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+        if (cat === 'wipers') label = 'Wipers';
+        if (cat === 'fire-fighting') label = 'Fire Fighting';
+        btn.textContent = label;
+        btn.className = `filter-btn px-4 py-1.5 text-sm rounded-2xl border border-slate-300 hover:bg-slate-100 font-medium ${cat === 'All' ? 'active bg-sky-600 text-white border-sky-600' : 'bg-white'}`;
+        btn.onclick = () => filterGallery(cat, btn);
+        container.appendChild(btn);
+      });
+    }
+
+    function filterGallery(category, activeBtn = null) {
+      document.querySelectorAll('#filter-buttons button').forEach(b => b.classList.remove('active', 'bg-sky-600', 'text-white', 'border-sky-600'));
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-sky-600', 'text-white', 'border-sky-600');
+      }
+      currentFiltered = category === 'All' 
+        ? [...photos] 
+        : photos.filter(p => p.category === category);
+      renderGrid();
+      document.getElementById('results-count').textContent = `${currentFiltered.length} photos`;
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('photo-grid');
+      grid.innerHTML = '';
+      currentFiltered.forEach((photo, index) => {
+        const item = document.createElement('div');
+        item.className = 'masonry-item group cursor-pointer photo-card';
+        item.innerHTML = `
+          <img src="${photo.src}" 
+               class="w-full object-cover" 
+               style="aspect-ratio: 4 / 3;"
+               loading="lazy"
+               alt="Real installation photo">
+        `;
+        item.onclick = () => openLightbox(index);
+        grid.appendChild(item);
+      });
+    }
+
+    function openLightbox(filteredIndex) {
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-image');
+      const counter = document.getElementById('lightbox-counter');
+      currentIndex = filteredIndex;
+      const photo = currentFiltered[currentIndex];
+      img.src = photo.src;
+      counter.textContent = `${currentIndex + 1} / ${currentFiltered.length}`;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('flex');
+      lightbox.classList.add('hidden');
+    }
+
+    function nextPhoto() {
+      currentIndex = (currentIndex + 1) % currentFiltered.length;
+      updateLightboxImage();
+    }
+
+    function prevPhoto() {
+      currentIndex = (currentIndex - 1 + currentFiltered.length) % currentFiltered.length;
+      updateLightboxImage();
+    }
+
+    function updateLightboxImage() {
+      const img = document.getElementById('lightbox-image');
+      const counter = document.getElementById('lightbox-counter');
+      const photo = currentFiltered[currentIndex];
+      img.src = photo.src;
+      counter.textContent = `${currentIndex + 1} / ${currentFiltered.length}`;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextPhoto();
+      if (e.key === 'ArrowLeft') prevPhoto();
+    });
+
+    function initGallery() {
+      initFilters();
+      currentFiltered = [...photos];
+      renderGrid();
+      document.getElementById('results-count').textContent = `${currentFiltered.length} photos`;
+      const allBtn = document.querySelector('#filter-buttons button');
+      if (allBtn) allBtn.classList.add('active', 'bg-sky-600', 'text-white', 'border-sky-600');
+    }
+
+    window.onload = initGallery;
+  </script>
+</body>
+</html>

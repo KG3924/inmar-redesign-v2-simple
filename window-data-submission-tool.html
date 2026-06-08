@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Data Submission Tool | In-Mar Systems</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system_ui, sans-serif; }
+    .heading-font { font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif; font-weight: 600; letter-spacing: -0.025em; }
+    .field-label { font-size: 0.75rem; font-weight: 500; color: #475569; }
+    .field-help { font-size: 0.7rem; color: #64748b; }
+  </style>
+</head>
+<body class="bg-white">
+  <!-- Top bar -->
+  <div class="bg-slate-900 text-white text-xs py-1.5">
+    <div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems • (225) 430-9111</div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="bg-white border-b sticky top-0 z-50">
+    <div class="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-x-3">
+        <img src="assets/images/logos/inmarlogosmall.png" alt="In-Mar Systems logo - tugboat and tower icon" class="h-10 w-auto">
+        <div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div>
+      </a>
+      <div class="hidden md:flex gap-x-8 text-sm font-medium">
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="resources.html">Resources</a>
+        <a href="resources.html#dibbs" class="hover:text-sky-600">DIBBS</a>
+        <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" class="hover:text-sky-600">ShipServ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
+    </div>
+  </nav>
+
+  <div class="max-w-3xl mx-auto px-6 pt-10">
+    <div class="max-w-2xl">
+      <div class="uppercase text-xs tracking-[2px] font-semibold text-sky-600">WIPER QUOTES</div>
+      <h1 class="text-4xl font-semibold tracking-tighter mt-1">Window Data Submission Tool</h1>
+      <p class="mt-3 text-slate-600">Submit the exact measurements and specifications for your vessel's windows. This tool replaces the previous manual PDF datasheet. Your data will be included directly in your quote request.</p>
+    </div>
+
+    <div class="mt-8 bg-slate-50 border rounded-2xl p-8">
+      <form id="window-form" onsubmit="submitWindowForm(event)" class="space-y-6">
+        <!-- Basic Info -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label class="field-label block mb-1.5">Project / Vessel Name *</label>
+            <input name="vessel" required class="w-full border border-slate-300 px-4 py-2.5 rounded-xl text-sm" placeholder="e.g. MV Gulf Explorer">
+          </div>
+          <div>
+            <label class="field-label block mb-1.5">Quantity *</label>
+            <input name="qty" type="number" min="1" value="1" required class="w-full border border-slate-300 px-4 py-2.5 rounded-xl text-sm">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label class="field-label block mb-1.5">Clear Glass Width (mm) *</label>
+            <input name="glassWidth" type="number" required class="w-full border border-slate-300 px-4 py-2.5 rounded-xl text-sm" placeholder="e.g. 1200">
+          </div>
+          <div>
+            <label class="field-label block mb-1.5">Clear Glass Height (mm) *</label>
+            <input name="glassHeight" type="number" required class="w-full border border-slate-300 px-4 py-2.5 rounded-xl text-sm" placeholder="e.g. 800">
+          </div>
+        </div>
+
+        <div>
+          <label class="field-label block mb-1.5">Input Voltage *</label>
+          <input name="voltage" required class="w-full border border-slate-300 px-4 py-2.5 rounded-xl text-sm" placeholder="e.g. 24V DC or 110/220V AC">
+        </div>
+
+        <!-- Dimensions from the original datasheet -->
+        <div>
+          <div class="field-label mb-2">Installation Dimensions (from the traditional datasheet)</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div>
+              <label class="field-label block mb-1">A — Angle of glass</label>
+              <input name="dimA" type="number" step="0.1" class="w-full border border-slate-300 px-3 py-2 rounded-xl text-sm" placeholder="degrees">
+              <div class="field-help mt-0.5">Angle of the glass from vertical/horizontal as applicable.</div>
+            </div>
+            <div>
+              <label class="field-label block mb-1">R — Distance glass to mounting surface</label>
+              <input name="dimR" type="number" class="w-full border border-slate-300 px-3 py-2 rounded-xl text-sm" placeholder="mm">
+              <div class="field-help mt-0.5">Distance from glass surface to the mounting surface.</div>
+            </div>
+            <div>
+              <label class="field-label block mb-1">X — Available mounting space</label>
+              <input name="dimX" type="number" class="w-full border border-slate-300 px-3 py-2 rounded-xl text-sm" placeholder="mm">
+              <div class="field-help mt-0.5">Space available for mounting the wiper mechanism.</div>
+            </div>
+            <div>
+              <label class="field-label block mb-1">T — Bulkhead thickness</label>
+              <input name="dimT" type="number" class="w-full border border-slate-300 px-3 py-2 rounded-xl text-sm" placeholder="mm">
+              <div class="field-help mt-0.5">Thickness of the bulkhead or window frame.</div>
+            </div>
+            <div>
+              <label class="field-label block mb-1">I — Insulation thickness</label>
+              <input name="dimI" type="number" class="w-full border border-slate-300 px-3 py-2 rounded-xl text-sm" placeholder="mm">
+              <div class="field-help mt-0.5">Any insulation or lining thickness to account for.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3 bg-slate-900 text-white font-semibold rounded-xl text-sm">Submit Window Data</button>
+          <p class="text-center text-[10px] text-slate-400 mt-2">This information will be attached to your quote request for accurate wiper sizing and pricing.</p>
+        </div>
+      </form>
+    </div>
+
+    <div class="mt-6 text-xs text-slate-500 max-w-prose">
+      <strong>Why these measurements?</strong> Accurate A, R, X, T, and I dimensions ensure the correct wiper arm length, motor torque, blade size, and mounting hardware for reliable performance in marine conditions. If you don't have all dimensions yet, submit what you have and our team will follow up.
+    </div>
+  </div>
+
+  <footer class="mt-12 border-t py-6 text-xs text-slate-500">
+    <div class="max-w-5xl mx-auto px-6">In-Mar Systems • <a href="index.html" class="hover:text-slate-900">Return to Home</a> • <a href="products.html" class="hover:text-slate-900">Products</a></div>
+  </footer>
+
+  <script>
+    function submitWindowForm(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      
+      const summary = `
+        <div class="p-6">
+          <i class="fa-solid fa-check-circle text-emerald-500 text-3xl"></i>
+          <div class="font-semibold mt-4">Window data submitted successfully (demo).</div>
+          <div class="text-sm mt-3 bg-white border p-4 rounded text-left text-xs">
+            <strong>Summary:</strong><br>
+            Vessel/Project: ${data.get('vessel') || '—'}<br>
+            Glass: ${data.get('glassWidth') || '?'} × ${data.get('glassHeight') || '?'} mm<br>
+            Qty: ${data.get('qty') || '1'} &nbsp; Voltage: ${data.get('voltage') || '—'}<br>
+            Dims — A: ${data.get('dimA') || '—'}° &nbsp; R: ${data.get('dimR') || '—'}mm &nbsp; X: ${data.get('dimX') || '—'}mm &nbsp; T: ${data.get('dimT') || '—'}mm &nbsp; I: ${data.get('dimI') || '—'}mm
+          </div>
+          <div class="text-xs text-slate-500 mt-3">In a live system this would be sent to In-Mar for quoting. You can also request a full quote from the main site.</div>
+          <div class="mt-4 flex gap-3">
+            <button onclick="window.location.href='index.html'" class="flex-1 py-2 border rounded text-sm">Return Home</button>
+            <button onclick="window.location.href='products.html'" class="flex-1 py-2 bg-sky-600 text-white rounded text-sm">View Products</button>
+          </div>
+        </div>
+      `;
+      
+      form.outerHTML = summary;
+    }
+  </script>
+</body>
+</html>

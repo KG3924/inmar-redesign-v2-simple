@@ -1,0 +1,15 @@
+# macOS / junk
+.DS_Store
+**/.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Local only
+*.log
+tmp/
+
+# If user later adds node or build artifacts
+node_modules/
+dist/

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact In-Mar Systems | Request a Quote or Information</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body { font-family: 'Inter', system_ui, sans-serif; }
+    .heading-font { font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif; font-weight: 600; letter-spacing: -0.025em; }
+  </style>
+</head>
+<body class="bg-slate-50">
+  <div class="bg-slate-900 text-white text-xs py-1.5"><div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems • (225) 430-9111</div></div>
+  
+  <nav class="bg-white border-b sticky top-0 z-50">
+    <div class="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-x-3">
+        <img src="assets/images/logos/inmarlogosmall.png" alt="In-Mar Systems logo - tugboat and tower icon" class="h-10 w-auto">
+        <div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div>
+      </a>
+      <div class="hidden md:flex gap-x-8 text-sm font-medium">
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="resources.html">Resources</a>
+        <a href="resources.html#dibbs" class="text-sky-600 font-semibold">DIBBS</a>
+        <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank">ShipServ</a>
+        <a href="contact.html" class="text-sky-600 font-semibold">Contact</a>
+      </div>
+      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
+    </div>
+  </nav>
+
+  <div class="max-w-screen-2xl mx-auto px-6 pt-10 pb-8 grid md:grid-cols-2 gap-x-10">
+    <div>
+      <h1 class="text-4xl heading-font tracking-tighter font-semibold">Let's talk about your requirements.</h1>
+      <p class="mt-3 text-slate-600">Whether you need a quote for new equipment, support on an existing installation, or help with a DIBBS solicitation, our team is ready.</p>
+
+      <div class="mt-8 bg-white border rounded-3xl p-6">
+        <div class="font-semibold">In-Mar Systems, Inc.<br>In-Mar Solutions, LLC</div>
+        <div class="mt-3 text-sm">
+          3011 S. Ruby Ave<br>
+          Gonzales, LA 70737<br><br>
+          Phone: <strong>(225) 430-9111</strong><br>
+          Fax: (225) 644-7046<br>
+          Email: info@inmarsystems.com
+        </div>
+        <div class="mt-4 text-xs text-slate-500">New phone number in effect. Please update your records.</div>
+      </div>
+
+      <div class="mt-5 text-xs text-slate-500">
+        Typical response time: within 1 business day.
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="mt-8 md:mt-0">
+      <div class="bg-white border rounded-3xl p-6">
+        <div class="font-semibold mb-4">Send us a message</div>
+        <form id="contact-form" onsubmit="handleContactSubmit(event)">
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <input required name="first" placeholder="First name *" class="border p-3 rounded-2xl text-sm">
+            <input required name="last" placeholder="Last name *" class="border p-3 rounded-2xl text-sm">
+          </div>
+          <div class="mb-3">
+            <input required name="company" placeholder="Company *" class="w-full border p-3 rounded-2xl text-sm">
+          </div>
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <input required name="email" type="email" placeholder="Email *" class="border p-3 rounded-2xl text-sm">
+            <input required name="phone" placeholder="Phone *" class="border p-3 rounded-2xl text-sm">
+          </div>
+          <div class="mb-3">
+            <input name="vessel" placeholder="Vessel / Project / Solicitation #" class="w-full border p-3 rounded-2xl text-sm">
+          </div>
+          <div class="mb-3">
+            <textarea required name="message" rows="4" placeholder="How can we help? *" class="w-full border p-3 rounded-2xl text-sm"></textarea>
+          </div>
+          <button type="submit" class="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-semibold rounded-2xl text-sm">Send Message</button>
+          <div class="text-[10px] text-center text-slate-400 mt-2">Demo form — submissions are logged locally only in this preview.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map placeholder + note -->
+  <div class="max-w-screen-2xl mx-auto px-6 pb-10">
+    <div class="bg-slate-200 rounded-3xl h-64 flex items-center justify-center text-slate-500 text-sm">
+      <div class="text-center">
+        <i class="fa-solid fa-map-marked text-3xl mb-2"></i><br>
+        Gonzales, Louisiana area • Map would be embedded here (Google Maps or Leaflet)
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-xs px-6 py-4 text-slate-500 max-w-screen-2xl mx-auto border-t">Concept redesign demo. Official contact details from inmarsystems.com.</footer>
+
+  <!-- Quote modal -->
+  <div id="quote-modal" onclick="if (event.target.id === 'quote-modal') closeQuoteModal()" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+    <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-md rounded-3xl p-5">
+      <div class="font-semibold mb-3">Request a Quote</div>
+      <form onsubmit="handleQuoteSubmit(event)" class="space-y-3 text-sm">
+        <input name="name" required placeholder="Name *" class="w-full border p-2.5 rounded-2xl">
+        <input name="email" required type="email" placeholder="Work Email *" class="w-full border p-2.5 rounded-2xl">
+        <input name="vessel" placeholder="Vessel/Project" class="w-full border p-2.5 rounded-2xl">
+        <textarea name="need" placeholder="What do you need quoted?" class="w-full border p-2.5 rounded-2xl" rows="2"></textarea>
+        <div class="flex gap-x-3"><button type="button" onclick="closeQuoteModal()" class="flex-1 py-2 border rounded-2xl">Cancel</button><button type="submit" class="flex-1 py-2 bg-sky-600 text-white rounded-2xl font-semibold">Submit</button></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openQuoteModal() {
+      const m = document.getElementById('quote-modal');
+      m.classList.remove('hidden'); m.classList.add('flex');
+    }
+    function closeQuoteModal() {
+      const m = document.getElementById('quote-modal');
+      m.classList.remove('flex'); m.classList.add('hidden');
+    }
+    function handleQuoteSubmit(e) {
+      e.preventDefault();
+      e.target.innerHTML = `<div class="py-6 text-center"><i class="fa-solid fa-check-circle text-emerald-500 text-4xl"></i><div class="font-semibold mt-3">Thank you — quote request received (demo).</div></div>`;
+    }
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      form.innerHTML = `<div class="py-8 text-center"><i class="fa-solid fa-check-circle text-emerald-500 text-5xl"></i><div class="mt-4 font-semibold">Message sent. Thank you.</div><p class="text-sm text-slate-600 mt-1">We'll be in touch within 1 business day.</p><button onclick="location.reload()" class="mt-5 px-5 py-2 text-sm bg-slate-900 text-white rounded-2xl">Done</button></div>`;
+    }
+  </script>
+</body>
+</html>
