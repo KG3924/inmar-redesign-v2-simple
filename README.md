@@ -2,7 +2,7 @@
 
 **Status**: Fresh start in a completely separate folder/project (`inmar-redesign-v2-simple/`). The previous concept (in `inmar-fresh-start/`) is untouched and can be referenced or refined later.
 
-**Live (after you push to a new repo)**: Will be at its own GitHub Pages URL (separate from the old concept demo).
+**Live (after you push to a new repo)**: Your site is live at https://kg3924.github.io/inmar-redesign-v2-simple/
 
 ## Goals (from feedback)
 - Functional site **first** — simple, fast, eye-catching, **no fluff**.
