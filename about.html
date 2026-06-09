@@ -17,43 +17,41 @@
 <body class="bg-slate-50 text-slate-900">
   <!-- Top bar -->
   <div class="bg-slate-900 text-white text-xs py-1.5">
-    <div class="max-w-screen-2xl mx-auto px-6 flex items-center justify-between">
-      <span class="font-medium">In-Mar Systems, Inc. &amp; In-Mar Solutions, LLC — Gonzales, LA</span>
-      <span class="hidden md:inline text-slate-400">(225) 430-9111</span>
-    </div>
+    <div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems • (225) 430-9111</div>
   </div>
 
-  <!-- Header -->
-  <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+  <!-- Nav -->
+  <nav class="bg-white border-b sticky top-0 z-50">
     <div class="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-x-3">
         <img src="assets/images/logos/inmarlogosmall.png" alt="In-Mar Systems logo - tugboat and tower icon" class="h-10 w-auto">
-        <div>
-          <div class="font-semibold text-xl tracking-tighter heading-font">In-Mar Systems</div>
-          <div class="text-[10px] text-slate-500 -mt-1">IN-MAR SOLUTIONS</div>
-        </div>
+        <div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div>
       </a>
-
-      <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-        <a href="about.html" class="nav-active">About</a>
-        <a href="products.html" class="hover:text-sky-600 transition-colors">Products</a>
-        <a href="gallery.html" class="hover:text-sky-600 transition-colors">Gallery</a>
-        <a href="resources.html" class="hover:text-sky-600 transition-colors">Resources</a>
-        <a href="resources.html#dibbs" class="hover:text-sky-600 transition-colors font-medium">DIBBS</a>
-        <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" class="hover:text-sky-600 transition-colors">ShipServ</a>
-        <a href="contact.html" class="hover:text-sky-600 transition-colors">Contact</a>
+      <div class="hidden md:flex gap-x-8 text-sm font-medium">
+        <a href="about.html" class="text-sky-600 font-semibold">About</a>
+        <div class="relative group">
+          <a href="products.html" class="flex items-center gap-1">Products <i class="fa-solid fa-chevron-down text-[10px] mt-0.5"></i></a>
+          <div class="absolute left-0 mt-2 hidden group-hover:block bg-white border border-slate-200 rounded-2xl shadow-xl py-2 w-60 z-[60] text-sm">
+            <div class="px-3 pt-1 pb-0.5 text-[10px] font-semibold text-slate-500 tracking-wider">Wynn Marine Wipers</div>
+            <a href="straight-line-wipers.html" class="block px-3 py-1 hover:bg-slate-100">Straight Line</a>
+            <a href="pantograph-pendulum-wipers.html" class="block px-3 py-1 hover:bg-slate-100">Pantograph &amp; Pendulum</a>
+            <a href="wiper-controllers.html" class="block px-3 py-1 hover:bg-slate-100">Controllers</a>
+            <a href="wash-systems.html" class="block px-3 py-1 hover:bg-slate-100">Wash Systems</a>
+            <a href="clear-view-screens.html" class="block px-3 py-1 hover:bg-slate-100">Clear View Screens</a>
+            <div class="border-t my-1 mx-2"></div>
+            <a href="fire-fighting-systems.html" class="block px-3 py-1 hover:bg-slate-100">Fire Fighting Systems (FFS)</a>
+            <a href="alu-seating-rails.html" class="block px-3 py-1 hover:bg-slate-100">Alu Design Seating &amp; Rails</a>
+            <a href="solar-solve-shades.html" class="block px-3 py-1 hover:bg-slate-100">Solar Solve Shades</a>
+            <a href="nijhuis-pumps.html" class="block px-3 py-1 hover:bg-slate-100">Nijhuis Fire Pumps</a>
+          </div>
+        </div>
+        <a href="gallery.html">Gallery</a>
+        <a href="resources.html">Resources</a>
+        <a href="resources.html#dibbs" class="hover:text-sky-600">DIBBS</a>
+        <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" class="hover:text-sky-600">ShipServ</a>
+        <a href="contact.html">Contact</a>
       </div>
-
-      <div class="hidden md:flex items-center gap-x-3">
-        <button onclick="openQuoteModal()" class="px-5 py-2.5 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold flex items-center gap-x-2">
-          <i class="fa-solid fa-file-lines"></i> <span>Request Quote</span>
-        </button>
-        <a href="contact.html" class="px-4 py-2.5 rounded-2xl border border-slate-300 hover:bg-slate-100 text-sm font-medium">Contact Sales</a>
-      </div>
-
-      <div class="md:hidden">
-        <button onclick="openQuoteModal()" class="px-4 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Quote</button>
-      </div>
+      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
     </div>
   </nav>
 

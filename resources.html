@@ -23,7 +23,22 @@
       </a>
       <div class="hidden md:flex gap-x-8 text-sm font-medium">
         <a href="about.html">About</a>
-        <a href="products.html">Products</a>
+        <div class="relative group">
+          <a href="products.html" class="flex items-center gap-1">Products <i class="fa-solid fa-chevron-down text-[10px] mt-0.5"></i></a>
+          <div class="absolute left-0 mt-2 hidden group-hover:block bg-white border border-slate-200 rounded-2xl shadow-xl py-2 w-60 z-[60] text-sm">
+            <div class="px-3 pt-1 pb-0.5 text-[10px] font-semibold text-slate-500 tracking-wider">Wynn Marine Wipers</div>
+            <a href="straight-line-wipers.html" class="block px-3 py-1 hover:bg-slate-100">Straight Line</a>
+            <a href="pantograph-pendulum-wipers.html" class="block px-3 py-1 hover:bg-slate-100">Pantograph &amp; Pendulum</a>
+            <a href="wiper-controllers.html" class="block px-3 py-1 hover:bg-slate-100">Controllers</a>
+            <a href="wash-systems.html" class="block px-3 py-1 hover:bg-slate-100">Wash Systems</a>
+            <a href="clear-view-screens.html" class="block px-3 py-1 hover:bg-slate-100">Clear View Screens</a>
+            <div class="border-t my-1 mx-2"></div>
+            <a href="fire-fighting-systems.html" class="block px-3 py-1 hover:bg-slate-100">Fire Fighting Systems (FFS)</a>
+            <a href="alu-seating-rails.html" class="block px-3 py-1 hover:bg-slate-100">Alu Design Seating &amp; Rails</a>
+            <a href="solar-solve-shades.html" class="block px-3 py-1 hover:bg-slate-100">Solar Solve Shades</a>
+            <a href="nijhuis-pumps.html" class="block px-3 py-1 hover:bg-slate-100">Nijhuis Fire Pumps</a>
+          </div>
+        </div>
         <a href="gallery.html">Gallery</a>
         <a href="resources.html" class="text-sky-600 font-semibold">Resources</a>
         <a href="resources.html#dibbs" class="text-sky-600 font-semibold">DIBBS</a>
@@ -78,7 +93,14 @@
           <button onclick="filterDIBBS('2090')" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100" data-filter="2090">Wiper (2090)</button>
           <button onclick="filterDIBBS('3030')" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100" data-filter="3030">Belts (3030)</button>
           <button onclick="filterDIBBS('other')" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100" data-filter="other">Other</button>
+          <!-- Keyword filters based on filename identifiers (e.g. "Windshield Wiper Blade.pdf") -->
+          <button onclick="document.getElementById('dibbs-search').value='Wiper Blade'; filterDIBBS(currentFilter);" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100">Wiper Blade</button>
+          <button onclick="document.getElementById('dibbs-search').value='Motor'; filterDIBBS(currentFilter);" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100">Motor</button>
+          <button onclick="document.getElementById('dibbs-search').value='Controller'; filterDIBBS(currentFilter);" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100">Controller</button>
+          <button onclick="document.getElementById('dibbs-search').value='Assembly'; filterDIBBS(currentFilter);" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100">Assembly</button>
+          <button onclick="document.getElementById('dibbs-search').value='Belt'; filterDIBBS(currentFilter);" class="px-3 py-1 text-xs border rounded-2xl hover:bg-slate-100">Belt</button>
         </div>
+        <div class="text-[10px] text-slate-400 w-full">Note: 2090/3030 are NSN prefixes (2090 for wipers/marine equip, 3030 for belts). Keyword buttons/search use terms from the PDF filenames in assets/pdfs/dibbs-quotes/.</div>
       </div>
 
       <div class="overflow-x-auto">
@@ -87,6 +109,7 @@
             <tr class="text-left border-b text-xs text-slate-500">
               <th class="py-2 px-3 font-normal cursor-pointer" onclick="sortDIBBS(0)">Solicitation <i class="fa-solid fa-sort text-[10px]"></i></th>
               <th class="py-2 px-3 font-normal cursor-pointer" onclick="sortDIBBS(1)">NSN <i class="fa-solid fa-sort text-[10px]"></i></th>
+              <th class="py-2 px-3 font-normal">Description / Keywords (from filename)</th>
               <th class="py-2 px-3 font-normal">Link</th>
             </tr>
           </thead>
@@ -118,8 +141,8 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 text-sm">
       <a href="assets/pdfs/products/seating/alu_catalog_-_2024.pdf" target="_blank" class="block bg-white border p-4 rounded-2xl hover:bg-slate-50">Alu Design 2024 Catalog (PDF)</a>
       <a href="assets/pdfs/products/wipers/navy_and_uscg_reference_list_-_2024.pdf" target="_blank" class="block bg-white border p-4 rounded-2xl hover:bg-slate-50">Wynn Marine — U.S. Navy &amp; USCG Reference List 2024 (PDF)</a>
-      <a href="assets/pdfs/products/wipers/type_c___type_d.pdf" target="_blank" class="block bg-white border p-4 rounded-2xl hover:bg-slate-50">Wynn Type C &amp; D Straight Line Brochure (PDF)</a>
-      <a href="assets/pdfs/dibbs-quotes/2090-01-120-4507.pdf" target="_blank" class="block bg-white border p-4 rounded-2xl hover:bg-slate-50">Sample DIBBS NSN Spec Sheet (PDF)</a>
+      <a href="assets/pdfs/products/wipers/straight line/type_c___type_d.pdf" target="_blank" class="block bg-white border p-4 rounded-2xl hover:bg-slate-50">Wynn Type C &amp; D Straight Line Brochure (PDF)</a>
+      <a href="assets/pdfs/dibbs-quotes/2090-01-120-4507-Blade.pdf" target="_blank" class="block bg-white border p-4 rounded-2xl hover:bg-slate-50">Sample DIBBS NSN Spec Sheet (PDF)</a>
       <span class="text-xs text-slate-400">Additional brochures and DIBBS sheets available in the assets/pdfs/ folders (organized by original site page).</span>
     </div>
   </div>
@@ -140,29 +163,71 @@
   </div>
 
   <script>
-    // DIBBS data (representative sample). Enhanced for v2: added "product" tag for sorting/filtering by product (Wipers, Belts, etc.).
-    // Real solicitations should always be verified on the official DIBBS site.
+    // DIBBS data rebuilt from actual files in assets/pdfs/dibbs-quotes/.
+    // "type" / keywords pulled directly from the descriptive part of each filename (user's added identifiers).
+    // 2090 = marine/wiper equipment NSN prefix; 3030 = belts. Search and keyword buttons now match these.
     let dibbsData = [
-      {sol: "SPE7M4-26-T-148M", nsn: "2090-01-120-4507", product: "Wipers", link: "images/pdfs/dibbs/2090-01-120-4507.pdf"},
-      {sol: "SPE7M4-26-T-131R", nsn: "2090-01-509-6704", product: "Wipers", link: "images/pdfs/dibbs/2090-01-509-6704.pdf"},
-      {sol: "SPE7M4-26-T-131N", nsn: "2090-01-506-0630", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-506-0630.pdf"},
-      {sol: "SPE7M4-26-T-134T", nsn: "2090-01-465-7137", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-465-7137.pdf"},
-      {sol: "SPE7L5-26-T-3642", nsn: "3030-01-464-7727", product: "Belts", link: "images/pdfs/dibbs/3030-01-464-7727.pdf"},
-      {sol: "SPE7M5-26-T-168V", nsn: "5999-99-435-3497", product: "Other", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/5999-99-435-3497.pdf"},
-      {sol: "SPE7L1-26-T-536D", nsn: "3030-01-614-6555", product: "Belts", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/3030-01-614-6555.pdf"},
-      {sol: "SPE7M4-26-T-085C", nsn: "2090-01-714-5608", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-714-5608_-_1.pdf"},
-      {sol: "SPE7M4-26-T-090C", nsn: "2090-01-572-9307", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-572-9307.pdf"},
-      {sol: "SPE7M4-26-T-089Z", nsn: "2090-01-514-8023", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-514-8023.pdf"},
-      {sol: "SPE7M4-26-T-078L", nsn: "2090-01-494-7227", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-494-7227.pdf"},
-      {sol: "SPE7M4-26-T-058A", nsn: "2090-01-560-0637", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-560-0637.pdf"},
-      {sol: "SPE7M4-26-T-056R", nsn: "2090-01-711-0786", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-711-0786.pdf"},
-      {sol: "SPE7M4-26-T-056P", nsn: "2090-01-718-1125", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-718-1125.pdf"},
-      {sol: "SPE7M4-26-T-050R", nsn: "2090-01-714-5609", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-714-5609.pdf"},
-      {sol: "SPE7M4-26-T-049E", nsn: "2090-01-714-5610", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-714-5610.pdf"},
-      {sol: "SPE7L1-26-T-454Z", nsn: "3030-01-520-8107", product: "Belts", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/3030-01-520-8107.pdf"},
-      {sol: "SPE7M4-26-T-035B", nsn: "2090-01-504-6237", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-504-6237.pdf"},
-      {sol: "SPE7M4-26-T-027M", nsn: "2090-01-640-7774", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-01-640-7774.pdf"},
-      {sol: "SPE7M4-26-T-009G", nsn: "2090-99-842-5481", product: "Wipers", link: "https://www.inmarsystems.com/uploads/9/1/6/3/9163116/2090-99-842-5481.pdf"},
+      // All 60 files from assets/pdfs/dibbs-quotes/ with keywords from filename tails
+      {sol: "SPE7M4-26-T-148M", nsn: "2090-01-120-4507", product: "Wipers", type: "Blade", link: "assets/pdfs/dibbs-quotes/2090-01-120-4507-Blade.pdf"},
+      {sol: "SPE7M4-26-T-438-0088", nsn: "2090-01-438-0088", product: "Wipers", type: "Windshield Wiper Blade", link: "assets/pdfs/dibbs-quotes/2090-01-438-0088-Windshield Wiper Blade.pdf"},
+      {sol: "SPE7M4-26-T-463-6326", nsn: "2090-01-463-6326", product: "Wipers", type: "Type D Mk 5", link: "assets/pdfs/dibbs-quotes/2090-01-463-6326-Type D Mk 5.pdf"},
+      {sol: "SPE7M4-26-T-464-9332", nsn: "2090-01-464-9332", product: "Wipers", type: "Rigid Blade", link: "assets/pdfs/dibbs-quotes/2090-01-464-9332-Rigid Blade.pdf"},
+      {sol: "SPE7M4-26-T-465-7134", nsn: "2090-01-465-7134", product: "Wipers", type: "Type D Mk 5", link: "assets/pdfs/dibbs-quotes/2090-01-465-7134-Type D Mk 5.pdf"},
+      {sol: "SPE7M4-26-T-465-7137", nsn: "2090-01-465-7137", product: "Wipers", type: "Type D Mk5", link: "assets/pdfs/dibbs-quotes/2090-01-465-7137-Type D Mk5.pdf"},
+      {sol: "SPE7M4-26-T-494-6908", nsn: "2090-01-494-6908", product: "Wipers", type: "Rigid Blade", link: "assets/pdfs/dibbs-quotes/2090-01-494-6908-Rigid Blade.pdf"},
+      {sol: "SPE7M4-26-T-494-7224", nsn: "2090-01-494-7224", product: "Wipers", type: "Motor", link: "assets/pdfs/dibbs-quotes/2090-01-494-7224-Motor.pdf"},
+      {sol: "SPE7M4-26-T-494-7227", nsn: "2090-01-494-7227", product: "Wipers", type: "Tension Spring", link: "assets/pdfs/dibbs-quotes/2090-01-494-7227-Tension Spring.pdf"},
+      {sol: "SPE7M4-26-T-496-1349", nsn: "2090-01-496-1349", product: "Wipers", type: "3 Phase Controller", link: "assets/pdfs/dibbs-quotes/2090-01-496-1349-3 Phase Controller.pdf"},
+      {sol: "SPE7M4-26-T-504-6237a", nsn: "2090-01-504-6237", product: "Wipers", type: "057T-Type D Mk5", link: "assets/pdfs/dibbs-quotes/2090-01-504-6237-057T-Type D Mk5.pdf"},
+      {sol: "SPE7M4-26-T-504-6237b", nsn: "2090-01-504-6237", product: "Wipers", type: "Type D Mk5", link: "assets/pdfs/dibbs-quotes/2090-01-504-6237-Type D Mk5.pdf"},
+      {sol: "SPE7M4-26-T-506-0630", nsn: "2090-01-506-0630", product: "Wipers", type: "Controller", link: "assets/pdfs/dibbs-quotes/2090-01-506-0630-Controller.pdf"},
+      {sol: "SPE7M4-26-T-506-2054", nsn: "2090-01-506-2054", product: "Wipers", type: "Type C Wiper Assembly", link: "assets/pdfs/dibbs-quotes/2090-01-506-2054-Type C Wiper Assembly.pdf"},
+      {sol: "SPE7M4-26-T-506-2060", nsn: "2090-01-506-2060", product: "Wipers", type: "Type C-Twin", link: "assets/pdfs/dibbs-quotes/2090-01-506-2060-Type C-Twin.pdf"},
+      {sol: "SPE7M4-26-T-509-6704", nsn: "2090-01-509-6704", product: "Wipers", type: "Wiper Assembly - Twin", link: "assets/pdfs/dibbs-quotes/2090-01-509-6704-Wiper Assembly - Twin.pdf"},
+      {sol: "SPE7M4-26-T-509-6710", nsn: "2090-01-509-6710", product: "Wipers", type: "Wiper Assembly-Single", link: "assets/pdfs/dibbs-quotes/2090-01-509-6710-Wiper Assembly-Single.pdf"},
+      {sol: "SPE7M4-26-T-509-6712", nsn: "2090-01-509-6712", product: "Wipers", type: "Wiper Assembly", link: "assets/pdfs/dibbs-quotes/2090-01-509-6712-Wiper Assembly.pdf"},
+      {sol: "SPE7M4-26-T-509-6731", nsn: "2090-01-509-6731", product: "Wipers", type: "Wiper Assembly-Single", link: "assets/pdfs/dibbs-quotes/2090-01-509-6731-Wiper Assembly-Single.pdf"},
+      {sol: "SPE7M4-26-T-514-8023", nsn: "2090-01-514-8023", product: "Wipers", type: "1850 Wiper System", link: "assets/pdfs/dibbs-quotes/2090-01-514-8023-1850 Wiper System.pdf"},
+      {sol: "SPE7M4-26-T-560-0637", nsn: "2090-01-560-0637", product: "Wipers", type: "Type C Wiper System", link: "assets/pdfs/dibbs-quotes/2090-01-560-0637-Type C Wiper System.pdf"},
+      {sol: "SPE7M4-26-T-565-8898", nsn: "2090-01-565-8898", product: "Wipers", type: "Articulated Blade Assembly", link: "assets/pdfs/dibbs-quotes/2090-01-565-8898-Articulated Blade Assembly.pdf"},
+      {sol: "SPE7M4-26-T-565-8905", nsn: "2090-01-565-8905", product: "Wipers", type: "Blade Arm Assembly", link: "assets/pdfs/dibbs-quotes/2090-01-565-8905-Blade Arm Assembly.pdf"},
+      {sol: "SPE7M4-26-T-572-9307", nsn: "2090-01-572-9307", product: "Wipers", type: "1850 Wiper System", link: "assets/pdfs/dibbs-quotes/2090-01-572-9307-1850 Wiper System.pdf"},
+      {sol: "SPE7M4-26-T-572-9473", nsn: "2090-01-572-9473", product: "Wipers", type: "Pantograph Arm 600mm", link: "assets/pdfs/dibbs-quotes/2090-01-572-9473-Pantograph Arm 600mm.pdf"},
+      {sol: "SPE7M4-26-T-572-9552a", nsn: "2090-01-572-9552", product: "Wipers", type: "1850 Wiper System", link: "assets/pdfs/dibbs-quotes/2090-01-572-9552-1850 Wiper System.pdf"},
+      {sol: "SPE7M4-26-T-572-9552b", nsn: "2090-01-572-9552", product: "Wipers", type: "1850 Wiper System (5928)", link: "assets/pdfs/dibbs-quotes/2090-01-572-9552-5928-1850 Wiper System.pdf"},
+      {sol: "SPE7M4-26-T-605-1268", nsn: "2090-01-605-1268", product: "Wipers", type: "1770 Seaserpent", link: "assets/pdfs/dibbs-quotes/2090-01-605-1268-1770 Seaserpent.pdf"},
+      {sol: "SPE7M4-26-T-640-7774", nsn: "2090-01-640-7774", product: "Wipers", type: "Drive Shaft Assembly", link: "assets/pdfs/dibbs-quotes/2090-01-640-7774-Drive Shaft Assembly.pdf"},
+      {sol: "SPE7M4-26-T-669-2333", nsn: "2090-01-669-2333", product: "Wipers", type: "Pivot Block-Blue", link: "assets/pdfs/dibbs-quotes/2090-01-669-2333-Pivot Block-Blue.pdf"},
+      {sol: "SPE7M4-26-T-669-2335", nsn: "2090-01-669-2335", product: "Wipers", type: "Type D Mk 5", link: "assets/pdfs/dibbs-quotes/2090-01-669-2335-Type D Mk 5.pdf"},
+      {sol: "SPE7M4-26-T-669-2339", nsn: "2090-01-669-2339", product: "Wipers", type: "500mm HD Wiper Blade Assembly", link: "assets/pdfs/dibbs-quotes/2090-01-669-2339-500mm HD Wiper Blade Assembly.pdf"},
+      {sol: "SPE7M4-26-T-669-8780", nsn: "2090-01-669-8780", product: "Wipers", type: "Windshield Wiper Assembly", link: "assets/pdfs/dibbs-quotes/2090-01-669-8780-Windshield Wiper Assembly.pdf"},
+      {sol: "SPE7M4-26-T-711-0786", nsn: "2090-01-711-0786", product: "Wipers", type: "Drive Pod Assembly", link: "assets/pdfs/dibbs-quotes/2090-01-711-0786-Drive Pod Assembly.pdf"},
+      {sol: "SPE7M4-26-T-714-4617", nsn: "2090-01-714-4617", product: "Wipers", type: "Wiper Assembly-Single", link: "assets/pdfs/dibbs-quotes/2090-01-714-4617-Wiper Assembly-Single.pdf"},
+      {sol: "SPE7M4-26-T-714-5607", nsn: "2090-01-714-5607", product: "Wipers", type: "Wiper Assembly-Single", link: "assets/pdfs/dibbs-quotes/2090-01-714-5607-Wiper Assembly-Single.pdf"},
+      {sol: "SPE7M4-26-T-714-5608a", nsn: "2090-01-714-5608", product: "Wipers", type: "050Q-Wiper Assembly-Single", link: "assets/pdfs/dibbs-quotes/2090-01-714-5608-050Q-Wiper Assembly-Single.pdf"},
+      {sol: "SPE7M4-26-T-714-5608b", nsn: "2090-01-714-5608", product: "Wipers", type: "Wiper Assembly-Single", link: "assets/pdfs/dibbs-quotes/2090-01-714-5608-Wiper Assembly-Single.pdf"},
+      {sol: "SPE7M4-26-T-714-5609", nsn: "2090-01-714-5609", product: "Wipers", type: "Wiper Assembly-Single", link: "assets/pdfs/dibbs-quotes/2090-01-714-5609-Wiper Assembly-Single.pdf"},
+      {sol: "SPE7M4-26-T-714-5610", nsn: "2090-01-714-5610", product: "Wipers", type: "Wiper Assembly-Single", link: "assets/pdfs/dibbs-quotes/2090-01-714-5610-Wiper Assembly-Single.pdf"},
+      {sol: "SPE7M4-26-T-718-1125", nsn: "2090-01-718-1125", product: "Wipers", type: "Wiper Assembly-Single", link: "assets/pdfs/dibbs-quotes/2090-01-718-1125-Wiper Assembly-Single.pdf"},
+      {sol: "SPE7M4-26-T-99-842-5481", nsn: "2090-99-842-5481", product: "Wipers", type: "6000 Series Wiper Control", link: "assets/pdfs/dibbs-quotes/2090-99-842-5481-6000 Series Wiper Control.pdf"},
+      {sol: "SPE7M4-26-T-2540-651-3751", nsn: "2540-01-651-3751", product: "Other", type: "Pivot Block", link: "assets/pdfs/dibbs-quotes/2540-01-651-3751-Pivot Block.pdf"},
+      {sol: "SPE7L1-26-T-3030-140-9212", nsn: "3030-01-140-9212", product: "Belts", type: "V Belt", link: "assets/pdfs/dibbs-quotes/3030-01-140-9212-V Belt.pdf"},
+      {sol: "SPE7L5-26-T-3030-464-7727", nsn: "3030-01-464-7727", product: "Belts", type: "V Belt", link: "assets/pdfs/dibbs-quotes/3030-01-464-7727-V Belt.pdf"},
+      {sol: "SPE7L1-26-T-3030-506-1092", nsn: "3030-01-506-1092", product: "Belts", type: "V Belt", link: "assets/pdfs/dibbs-quotes/3030-01-506-1092-V Belt.pdf"},
+      {sol: "SPE7L1-26-T-3030-508-9296", nsn: "3030-01-508-9296", product: "Belts", type: "V Belt", link: "assets/pdfs/dibbs-quotes/3030-01-508-9296-V Belt.pdf"},
+      {sol: "SPE7L1-26-T-3030-520-8107", nsn: "3030-01-520-8107", product: "Belts", type: "V Belt", link: "assets/pdfs/dibbs-quotes/3030-01-520-8107-V Belt.pdf"},
+      {sol: "SPE7L1-26-T-3030-614-6555", nsn: "3030-01-614-6555", product: "Belts", type: "V Belt", link: "assets/pdfs/dibbs-quotes/3030-01-614-6555-V Belt.pdf"},
+      {sol: "SPE7L1-26-T-3030-713-7092", nsn: "3030-01-713-7092", product: "Belts", type: "V Belt", link: "assets/pdfs/dibbs-quotes/3030-01-713-7092-V Belt.pdf"},
+      {sol: "SPE7M4-26-T-3040-505-8138", nsn: "3040-01-505-8138", product: "Other", type: "Connecting Rod", link: "assets/pdfs/dibbs-quotes/3040-01-505-8138-Connecting Rod.pdf"},
+      {sol: "SPE7M4-26-T-4130-562-1624", nsn: "4130-01-562-1624", product: "Other", type: "Heating Element", link: "assets/pdfs/dibbs-quotes/4130-01-562-1624-Heating Element.pdf"},
+      {sol: "SPE7M4-26-T-4540-474-0977", nsn: "4540-01-474-0977", product: "Other", type: "Deicing Heater", link: "assets/pdfs/dibbs-quotes/4540-01-474-0977-Deicing Heater.pdf"},
+      {sol: "SPE7M4-26-T-4940-633-1468", nsn: "4940-01-633-1468", product: "Other", type: "Type D wiper Arm Assembly", link: "assets/pdfs/dibbs-quotes/4940-01-633-1468-Type D wiper Arm Assembly.pdf"},
+      {sol: "SPE7M5-26-T-5999-435-3497", nsn: "5999-99-435-3497", product: "Other", type: "Wiper Control Keypad", link: "assets/pdfs/dibbs-quotes/5999-99-435-3497-Wiper Control Keypad.pdf"},
+      {sol: "SPE7M4-26-T-6105-437-8317", nsn: "6105-01-437-8317", product: "Wipers", type: "DC Motor", link: "assets/pdfs/dibbs-quotes/6105-01-437-8317-DC Motor.pdf"},
+      {sol: "SPE7M4-26-T-6105-469-3030", nsn: "6105-01-469-3030", product: "Wipers", type: "Window Wiper Motor", link: "assets/pdfs/dibbs-quotes/6105-01-469-3030-Window Wiper Motor.pdf"},
+      {sol: "SPE7M4-26-T-6105-669-1894", nsn: "6105-01-669-1894", product: "Wipers", type: "Drive Pod Assembly wMotor", link: "assets/pdfs/dibbs-quotes/6105-01-669-1894-Drive Pod Assembly wMotor.pdf"},
+      {sol: "SPE7M4-26-T-6110-461-8872a", nsn: "6110-01-461-8872", product: "Wipers", type: "8056-Controller", link: "assets/pdfs/dibbs-quotes/6110-01-461-8872-8056-Controller.pdf"},
+      {sol: "SPE7M4-26-T-6110-461-8872b", nsn: "6110-01-461-8872", product: "Wipers", type: "Controller", link: "assets/pdfs/dibbs-quotes/6110-01-461-8872-Controller.pdf"},
     ];
 
     let currentFilter = 'all';
@@ -177,6 +242,7 @@
         tr.innerHTML = `
           <td class="py-2 px-3 font-medium">${item.sol}</td>
           <td class="py-2 px-3 font-mono text-xs">${item.nsn}</td>
+          <td class="py-2 px-3 text-xs text-slate-600">${item.type || ''}</td>
           <td class="py-2 px-3"><a href="${item.link}" target="_blank" class="text-sky-600 hover:underline text-xs">View PDF <i class="fa-solid fa-external-link-alt text-[9px]"></i></a></td>
         `;
         tbody.appendChild(tr);
@@ -205,8 +271,9 @@
       }
       if (searchVal) {
         filtered = filtered.filter(d => 
-          d.sol.toLowerCase().includes(searchVal) || 
-          d.nsn.toLowerCase().includes(searchVal)
+          (d.sol || '').toLowerCase().includes(searchVal) || 
+          (d.nsn || '').toLowerCase().includes(searchVal) ||
+          (d.type || '').toLowerCase().includes(searchVal)
         );
       }
       renderDIBBS(filtered);
@@ -223,7 +290,11 @@
       else if (currentFilter === '3030') data = data.filter(d => d.nsn.startsWith('3030'));
       else if (currentFilter === 'other') data = data.filter(d => !d.nsn.startsWith('2090') && !d.nsn.startsWith('3030'));
 
-      if (searchVal) data = data.filter(d => d.sol.toLowerCase().includes(searchVal) || d.nsn.toLowerCase().includes(searchVal));
+      if (searchVal) data = data.filter(d => 
+        (d.sol || '').toLowerCase().includes(searchVal) || 
+        (d.nsn || '').toLowerCase().includes(searchVal) ||
+        (d.type || '').toLowerCase().includes(searchVal)
+      );
 
       data.sort((a, b) => {
         let valA = col === 0 ? a.sol : a.nsn;

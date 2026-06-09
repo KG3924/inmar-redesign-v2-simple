@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nijhuis Fire Pumps (Pentair Fairbanks Nijhuis) | In-Mar Systems</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>body { font-family: 'Inter', system_ui, sans-serif; } .heading-font { font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif; font-weight: 600; letter-spacing: -0.025em; }</style>
+</head>
+<body class="bg-white">
+  <div class="bg-slate-900 text-white text-xs py-1.5"><div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems • (225) 430-9111</div></div>
+  <nav class="bg-white border-b sticky top-0 z-50">
+    <div class="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-x-3"><img src="assets/images/logos/inmarlogosmall.png" alt="In-Mar Systems logo" class="h-10 w-auto"><div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div></a>
+      <div class="hidden md:flex gap-x-8 text-sm font-medium">
+        <a href="about.html">About</a>
+        <div class="relative group">
+          <a href="products.html" class="text-sky-600 font-semibold flex items-center gap-1">Products <i class="fa-solid fa-chevron-down text-[10px] mt-0.5"></i></a>
+          <div class="absolute left-0 mt-2 hidden group-hover:block bg-white border border-slate-200 rounded-2xl shadow-xl py-2 w-60 z-[60] text-sm">
+            <div class="px-3 pt-1 pb-0.5 text-[10px] font-semibold text-slate-500 tracking-wider">Wynn Marine Wipers</div>
+            <a href="straight-line-wipers.html" class="block px-3 py-1 hover:bg-slate-100">Straight Line</a>
+            <a href="pantograph-pendulum-wipers.html" class="block px-3 py-1 hover:bg-slate-100">Pantograph &amp; Pendulum</a>
+            <a href="wiper-controllers.html" class="block px-3 py-1 hover:bg-slate-100">Controllers</a>
+            <a href="wash-systems.html" class="block px-3 py-1 hover:bg-slate-100">Wash Systems</a>
+            <a href="clear-view-screens.html" class="block px-3 py-1 hover:bg-slate-100">Clear View Screens</a>
+            <div class="border-t my-1 mx-2"></div>
+            <a href="fire-fighting-systems.html" class="block px-3 py-1 hover:bg-slate-100">Fire Fighting Systems (FFS)</a>
+            <a href="alu-seating-rails.html" class="block px-3 py-1 hover:bg-slate-100">Alu Design Seating &amp; Rails</a>
+            <a href="solar-solve-shades.html" class="block px-3 py-1 hover:bg-slate-100">Solar Solve Shades</a>
+            <a href="nijhuis-pumps.html" class="block px-3 py-1 hover:bg-slate-100">Nijhuis Fire Pumps</a>
+          </div>
+        </div>
+        <a href="gallery.html">Gallery</a>
+        <a href="resources.html">Resources</a>
+        <a href="resources.html#dibbs" class="hover:text-sky-600">DIBBS</a>
+        <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" class="hover:text-sky-600">ShipServ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
+    </div>
+  </nav>
+
+  <div class="max-w-5xl mx-auto px-6 pt-10">
+    <div class="flex items-center gap-x-3 mb-3">
+      <img src="assets/images/logos/nijhuislogo.jpeg" alt="Nijhuis" class="h-7">
+      <h1 class="text-3xl font-semibold tracking-tight">Nijhuis Fire Pumps (Pentair Fairbanks Nijhuis)</h1>
+    </div>
+
+    <p class="text-slate-700">Centrifugal Fire Pump Parts. The new Pentair Fairbanks Nijhuis® offers the industry’s most complete set of solutions, products and services to municipal and industrial customers.</p>
+
+    <p class="mt-4 text-sm text-slate-600">A wide variety of pumps and controls will serve multiple markets including Water Supply, Sewage Handling, Flood Control, Power Generation, Desalination, Agricultural Irrigation, and Fire Protection. Pentair Fairbanks Nijhuis also delivers professional services including installation, maintenance, repair, and training.</p>
+
+    <p class="mt-4 text-sm text-slate-600">Manufacturing operates primarily out of Kansas City, KS USA and Winterswijk, The Netherlands. The combination of our two world-class engineering and manufacturing groups, with over 200 years of combined expertise, is a win for our customers around the globe.</p>
+
+    <div class="mt-4">
+      <img src="assets/images/products/pumps/Pump image.jpeg" alt="Nijhuis fire pump" class="rounded border max-h-64">
+    </div>
+
+    <div class="mt-8"><a href="products.html#pumps" class="text-sm text-sky-600 hover:underline">← Back to Pumps on Products page</a></div>
+  </div>
+
+  <footer class="border-t mt-12 py-6 text-xs text-slate-500"><div class="max-w-5xl mx-auto px-6">In-Mar Systems • <a href="products.html">Products</a></div></footer>
+
+  <div id="quote-modal" onclick="if (event.target.id==='quote-modal') closeQuoteModal()" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+    <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-md rounded-3xl p-5 shadow-2xl">
+      <div class="font-semibold mb-3">Quick Quote Request</div>
+      <form onsubmit="handleQuoteSubmit(event)" class="space-y-3 text-sm">
+        <input name="name" required placeholder="Name" class="w-full border p-2.5 rounded-2xl">
+        <input name="email" required type="email" placeholder="Email" class="w-full border p-2.5 rounded-2xl">
+        <select name="interest" class="w-full border p-2.5 rounded-2xl"><option>Nijhuis Pumps / Fire Pumps</option><option>Other</option></select>
+        <button class="w-full py-2.5 bg-sky-600 text-white rounded-2xl text-sm font-semibold">Submit (demo)</button>
+      </form>
+    </div>
+  </div>
+  <script>function openQuoteModal(){const m=document.getElementById('quote-modal');m.classList.remove('hidden');m.classList.add('flex');}function closeQuoteModal(){const m=document.getElementById('quote-modal');m.classList.remove('flex');m.classList.add('hidden');}function handleQuoteSubmit(e){e.preventDefault();e.target.innerHTML=`<div class="py-6 text-center"><i class="fa-solid fa-check-circle text-emerald-500 text-4xl"></i><div class="mt-2 font-semibold">Submitted (demo mode).</div></div>`;}</script>
+</body>
+</html>

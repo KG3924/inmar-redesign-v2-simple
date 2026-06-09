@@ -60,7 +60,22 @@
       </a>
       <div class="hidden md:flex gap-x-8 text-sm font-medium">
         <a href="about.html">About</a>
-        <a href="products.html">Products</a>
+        <div class="relative group">
+          <a href="products.html" class="flex items-center gap-1">Products <i class="fa-solid fa-chevron-down text-[10px] mt-0.5"></i></a>
+          <div class="absolute left-0 mt-2 hidden group-hover:block bg-white border border-slate-200 rounded-2xl shadow-xl py-2 w-60 z-[60] text-sm">
+            <div class="px-3 pt-1 pb-0.5 text-[10px] font-semibold text-slate-500 tracking-wider">Wynn Marine Wipers</div>
+            <a href="straight-line-wipers.html" class="block px-3 py-1 hover:bg-slate-100">Straight Line</a>
+            <a href="pantograph-pendulum-wipers.html" class="block px-3 py-1 hover:bg-slate-100">Pantograph &amp; Pendulum</a>
+            <a href="wiper-controllers.html" class="block px-3 py-1 hover:bg-slate-100">Controllers</a>
+            <a href="wash-systems.html" class="block px-3 py-1 hover:bg-slate-100">Wash Systems</a>
+            <a href="clear-view-screens.html" class="block px-3 py-1 hover:bg-slate-100">Clear View Screens</a>
+            <div class="border-t my-1 mx-2"></div>
+            <a href="fire-fighting-systems.html" class="block px-3 py-1 hover:bg-slate-100">Fire Fighting Systems (FFS)</a>
+            <a href="alu-seating-rails.html" class="block px-3 py-1 hover:bg-slate-100">Alu Design Seating &amp; Rails</a>
+            <a href="solar-solve-shades.html" class="block px-3 py-1 hover:bg-slate-100">Solar Solve Shades</a>
+            <a href="nijhuis-pumps.html" class="block px-3 py-1 hover:bg-slate-100">Nijhuis Fire Pumps</a>
+          </div>
+        </div>
         <a href="gallery.html" class="text-sky-600 font-semibold">Gallery</a>
         <a href="resources.html">Resources</a>
         <a href="resources.html#dibbs" class="hover:text-sky-600">DIBBS</a>
@@ -77,6 +92,34 @@
       <h1 class="text-4xl md:text-5xl heading-font font-semibold tracking-tighter mt-2">Photo Gallery</h1>
       <p class="mt-3 text-lg text-slate-600">Wipers, fire monitors, vessels, seating, and equipment in the field. Organized by category.</p>
     </div>
+  </div>
+
+  <!-- Quick links to separate product galleries (all photos from the respective subfolders) -->
+  <div class="max-w-screen-2xl mx-auto px-6 pb-4">
+    <div class="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+      <a href="#wipers" class="px-4 py-1.5 rounded-2xl border border-slate-300 hover:bg-slate-100">Wynn Wiper Installations (all 27 from wipergallery)</a>
+      <a href="#ffs" class="px-4 py-1.5 rounded-2xl border border-slate-300 hover:bg-slate-100">FFS Installations (all 28 from ffsgallery)</a>
+      <a href="#alu" class="px-4 py-1.5 rounded-2xl border border-slate-300 hover:bg-slate-100">ALU Seating &amp; Rails (all 48 from alugallery)</a>
+      <a href="#master" class="px-4 py-1.5 rounded-2xl border border-slate-300 hover:bg-slate-100">Full Master Gallery (180+ mixed)</a>
+    </div>
+  </div>
+
+  <!-- Dedicated Wynn Wiper Gallery (all photos from wipergallery/) -->
+  <div id="wipers" class="max-w-screen-2xl mx-auto px-6 pt-6">
+    <h2 class="text-xl font-semibold mb-3">Wynn Wiper Installations — wipergallery</h2>
+    <div id="wipers-masonry" class="masonry"></div>
+  </div>
+
+  <!-- Dedicated FFS Gallery (all photos from ffsgallery/) -->
+  <div id="ffs" class="max-w-screen-2xl mx-auto px-6 pt-8 border-t">
+    <h2 class="text-xl font-semibold mb-3">FFS Installations — ffsgallery</h2>
+    <div id="ffs-masonry" class="masonry"></div>
+  </div>
+
+  <!-- Dedicated ALU Gallery (all photos from alugallery/) -->
+  <div id="alu" class="max-w-screen-2xl mx-auto px-6 pt-8 border-t">
+    <h2 class="text-xl font-semibold mb-3">ALU Seating &amp; Rails — alugallery</h2>
+    <div id="alu-masonry" class="masonry"></div>
   </div>
 
   <!-- Filters -->
@@ -324,6 +367,30 @@
       { src: "assets/images/gallery/wipers/IMG_1527.PNG", category: "wipers" }
     ];
 
+    // Separate product galleries - ALL photos from the respective subfolders (placed on the same master gallery page)
+    const wiperPhotos = [
+      {src:"assets/images/products/wipers/wipergallery/027548_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/10_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/5010-wash-system_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/8000-controller-s_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/cvn-70-uss-carl-vinson_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/cvn-70-uss-carl-vinson-2_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/cvn-71-uss-roosevelt_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/ddg-105-dewey_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/frozen-boat-1_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/frozen-boat-2_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/leaflet-d-mk5-c_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/navy-amphib-600x400_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/nsc-1-cgc-bertholf_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/nsc-2-cgc-waesche_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/ny-fire-boat-2_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/photo-17_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/prince-of-wales_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/seattle-fire-boat-1_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/seattle-fire-boat-2_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/series-1000-s_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/series-2000-controller_2_orig.png"},{src:"assets/images/products/wipers/wipergallery/trident4_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/triple_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/type-c-old-style_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/wynn-motor-1850_2_orig.jpeg"},{src:"assets/images/products/wipers/wipergallery/wynn-motor-1850-s_3_orig.jpg"},{src:"assets/images/products/wipers/wipergallery/wynn-product-montage_3_orig.jpg"}
+    ];
+    const ffsPhotos = [
+      {src:"assets/images/products/ffs/ffsgallery/aaeaaqaaaaaaaay0aaaajgrjnjdimzmzlti2mmitndlkmi1imwqzltq1odbhyjjmmtu0na_orig.png"},{src:"assets/images/products/ffs/ffsgallery/almirante-storni-fire-3-swedish-coast-guard-660be5_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/copy-of-du-moulin-128_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/dpp-2937-copy_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/dpp-2938-copy_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/dpp-2940-copy_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/dpp-2942-copy_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/dpp-2945-copy_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/dpp-2946-copy_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/dpp-2947-copy_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/dpp-2949-copy_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/dsc01044_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/dsc01053_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/du-moulin-093_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/elite-full-water-display-ps_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/fire_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/fireboat-protector-port-of-long-beach-702x336_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/great-lakes-2_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/img-1412_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/img-6189_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/img-8545b_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/rig-fire-1_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/rig-fire-2_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/rig-fire-3_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/rig-fire-5_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/rig-fire-6_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/waterspray_orig.jpg"},{src:"assets/images/products/ffs/ffsgallery/waterspray-2_orig.jpg"}
+    ];
+    const aluPhotos = [
+      {src:"assets/images/products/seating/alugallery/3000-fc-angle-view-hr_1_orig.jpg"},{src:"assets/images/products/seating/alugallery/3000-fc-angle-view-hr_orig.jpg"},{src:"assets/images/products/seating/alugallery/3000-fc-rear-view-hr_1_orig.jpg"},{src:"assets/images/products/seating/alugallery/3000-fc-rear-view-hr_orig.jpg"},{src:"assets/images/products/seating/alugallery/3000-fc-side-view-hr-01_orig.jpg"},{src:"assets/images/products/seating/alugallery/4000-new-break-001_orig.png"},{src:"assets/images/products/seating/alugallery/4000-new-break-002_orig.png"},{src:"assets/images/products/seating/alugallery/4000-new-break-003_orig.png"},{src:"assets/images/products/seating/alugallery/600-d-angle-view-hr_orig.jpg"},{src:"assets/images/products/seating/alugallery/600-d-rear-view-hr_orig.jpg"},{src:"assets/images/products/seating/alugallery/600-d-side-view-hr_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-1200-office_orig.png"},{src:"assets/images/products/seating/alugallery/alu-1300-office_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-1400-office_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-1500-office_orig.png"},{src:"assets/images/products/seating/alugallery/alu-1600-office_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-200-flatback_orig.png"},{src:"assets/images/products/seating/alugallery/alu-200-standard_orig.png"},{src:"assets/images/products/seating/alugallery/alu-300-standard_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-3200-3400_orig.png"},{src:"assets/images/products/seating/alugallery/alu-3300-3500_orig.png"},{src:"assets/images/products/seating/alugallery/alu-3800-offshore_orig.png"},{src:"assets/images/products/seating/alugallery/alu-400-flatback_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-400-standard_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-4000_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-4100_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-500-flatback_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-500-standard_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-600-standard_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-630-angle-view-hr_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-630-rear-view-hr_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-630-side-view-hr_orig.jpg"},{src:"assets/images/products/seating/alugallery/alu-700-offshore_orig.png"},{src:"assets/images/products/seating/alugallery/aukra-15in-angle-view_orig.jpg"},{src:"assets/images/products/seating/alugallery/aukra-15in-rear-view_orig.jpg"},{src:"assets/images/products/seating/alugallery/aukra-15in-side-view_orig.jpg"},{src:"assets/images/products/seating/alugallery/bridge-picture-zoom_orig.jpg"},{src:"assets/images/products/seating/alugallery/chair-with-rail_orig.jpg"},{src:"assets/images/products/seating/alugallery/fc3000-jpeg_orig.jpg"},{src:"assets/images/products/seating/alugallery/op-630-on-alutech-4010-rear-view-hr_orig.jpg"},{src:"assets/images/products/seating/alugallery/op-d2000-op50-angle-view_orig.jpg"},{src:"assets/images/products/seating/alugallery/op50-with-monitor-side-view_orig.jpg"},{src:"assets/images/products/seating/alugallery/op50-with-monitors-joysticks_orig.jpg"},{src:"assets/images/products/seating/alugallery/op50-with-monitors-joysticks-rear-view_orig.jpg"},{src:"assets/images/products/seating/alugallery/op60-el-rear-view-hr_orig.jpg"},{src:"assets/images/products/seating/alugallery/render-cabin_orig.jpg"},{src:"assets/images/products/seating/alugallery/render-controls_orig.jpg"},{src:"assets/images/products/seating/alugallery/star-trek_orig.jpg"}
+    ];
+
+    function renderSimpleGallery(containerId, photoList) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+      photoList.forEach(p => {
+        const item = document.createElement('div');
+        item.className = 'masonry-item group cursor-pointer photo-card';
+        item.innerHTML = `<img src="${p.src}" class="w-full object-cover" style="aspect-ratio: 4 / 3;" loading="lazy" alt="Real installation photo">`;
+        item.onclick = () => window.open(p.src, '_blank');
+        container.appendChild(item);
+      });
+    }
+
     const categoryOrder = ['All', 'wipers', 'fire-fighting', 'military', 'seating', 'vessels'];
 
     let currentFiltered = [];
@@ -425,6 +492,11 @@
       document.getElementById('results-count').textContent = `${currentFiltered.length} photos`;
       const allBtn = document.querySelector('#filter-buttons button');
       if (allBtn) allBtn.classList.add('active', 'bg-sky-600', 'text-white', 'border-sky-600');
+
+      // Populate the three dedicated product galleries (all photos from subfolders)
+      renderSimpleGallery('wipers-masonry', wiperPhotos);
+      renderSimpleGallery('ffs-masonry', ffsPhotos);
+      renderSimpleGallery('alu-masonry', aluPhotos);
     }
 
     window.onload = initGallery;
