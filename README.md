@@ -1,5 +1,7 @@
 # In-Mar Systems — Static Site (inmar-redesign-v2-simple)
 
+Current Site Live here: https://kg3924.github.io/inmar-redesign-v2-simple/
+
 Professional, functional multi-page static website for In-Mar Systems / In-Mar Solutions. Zero build tools — pure HTML + Tailwind via CDN + Font Awesome + vanilla JS.
 
 ## Current State
