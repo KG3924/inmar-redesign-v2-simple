@@ -8,10 +8,10 @@
   <style>body { font-family: 'Inter', system_ui, sans-serif; } .heading-font { font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif; font-weight: 600; letter-spacing: -0.025em; }</style>
 </head>
 <body class="bg-white">
-  <div class="bg-slate-900 text-white text-xs py-1.5"><div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems • (225) 430-9111</div></div>
+  <div class="bg-slate-900 text-white text-xs py-1.5"><div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems &amp; Solutions • (225) 430-9111</div></div>
   <nav class="bg-white border-b sticky top-0 z-50">
     <div class="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-x-3"><img src="assets/images/logos/inmarlogosmall.png" alt="In-Mar Systems logo" class="h-10 w-auto"><div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div></a>
+      <a href="index.html" class="flex items-center gap-x-3"><img src="assets/images/logos/inmarlogosmall.png" alt="In-Mar Systems logo" class="h-10 w-auto"><div class="flex flex-col leading-none"><div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div><div class="font-semibold text-xl tracking-tighter">In-Mar Solutions</div></div></a>
       <div class="hidden md:flex gap-x-8 text-sm font-medium">
         <a href="about.html">About</a>
         <div class="relative group">
@@ -36,9 +36,33 @@
         <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" class="hover:text-sky-600">ShipServ</a>
         <a href="contact.html">Contact</a>
       </div>
-      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
+      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl hidden md:block">Request Quote</button>
+      <button onclick="toggleMobileMenu(this)" class="md:hidden p-2 text-2xl leading-none">☰</button>
     </div>
   </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-b px-6 py-3 text-sm">
+    <a href="about.html" class="block py-1">About</a>
+    <div class="py-1 border-t mt-1">
+      <div class="font-semibold text-xs text-slate-500">Products</div>
+      <a href="straight-line-wipers.html" class="block pl-2 py-0.5">Straight Line</a>
+      <a href="pantograph-pendulum-wipers.html" class="block pl-2 py-0.5">Pantograph &amp; Pendulum</a>
+      <a href="wiper-controllers.html" class="block pl-2 py-0.5">Controllers</a>
+      <a href="wash-systems.html" class="block pl-2 py-0.5">Wash Systems</a>
+      <a href="clear-view-screens.html" class="block pl-2 py-0.5">Clear View Screens</a>
+      <a href="fire-fighting-systems.html" class="block pl-2 py-0.5">Fire Fighting Systems (FFS)</a>
+      <a href="alu-seating-rails.html" class="block pl-2 py-0.5">Alu Design Seating &amp; Rails</a>
+      <a href="solar-solve-shades.html" class="block pl-2 py-0.5">Solar Solve Shades</a>
+      <a href="nijhuis-pumps.html" class="block pl-2 py-0.5">Nijhuis Fire Pumps</a>
+    </div>
+    <a href="gallery.html" class="block py-1 border-t mt-1">Gallery</a>
+    <a href="resources.html" class="block py-1">Resources</a>
+    <a href="resources.html#dibbs" class="block py-1">DIBBS</a>
+    <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" class="block py-1">ShipServ</a>
+    <a href="contact.html" class="block py-1">Contact</a>
+    <button onclick="openQuoteModal(); document.getElementById('mobile-menu').classList.add('hidden');" class="mt-2 w-full px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
+  </div>
 
   <div class="max-w-5xl mx-auto px-6 pt-10">
     <div class="flex items-center gap-x-3 mb-3">
@@ -72,6 +96,6 @@
       </form>
     </div>
   </div>
-  <script>function openQuoteModal(){const m=document.getElementById('quote-modal');m.classList.remove('hidden');m.classList.add('flex');}function closeQuoteModal(){const m=document.getElementById('quote-modal');m.classList.remove('flex');m.classList.add('hidden');}function handleQuoteSubmit(e){e.preventDefault();e.target.innerHTML=`<div class="py-6 text-center"><i class="fa-solid fa-check-circle text-emerald-500 text-4xl"></i><div class="mt-2 font-semibold">Submitted (demo mode).</div></div>`;}</script>
+<script src="js/nav.js"></script>
 </body>
 </html>

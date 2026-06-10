@@ -27,7 +27,7 @@
 <body class="bg-white text-slate-900">
   <!-- Top bar -->
   <div class="bg-slate-900 text-white text-xs py-1.5">
-    <div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems • (225) 430-9111</div>
+    <div class="max-w-screen-2xl mx-auto px-6">In-Mar Systems &amp; Solutions • (225) 430-9111</div>
   </div>
 
   <!-- Nav -->
@@ -35,7 +35,10 @@
     <div class="max-w-screen-2xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-x-3">
         <img src="assets/images/logos/inmarlogosmall.png" alt="In-Mar Systems logo - tugboat and tower icon" class="h-10 w-auto">
-        <div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div>
+        <div class="flex flex-col leading-none">
+          <div class="font-semibold text-xl tracking-tighter">In-Mar Systems</div>
+          <div class="font-semibold text-xl tracking-tighter">In-Mar Solutions</div>
+        </div>
       </a>
       <div class="hidden md:flex gap-x-8 text-sm font-medium">
         <a href="about.html">About</a>
@@ -61,9 +64,33 @@
         <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" class="hover:text-sky-600">ShipServ</a>
         <a href="contact.html">Contact</a>
       </div>
-      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
+      <button onclick="openQuoteModal()" class="px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl hidden md:block">Request Quote</button>
+      <button onclick="toggleMobileMenu(this)" class="md:hidden p-2 text-2xl leading-none">☰</button>
     </div>
   </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-b px-6 py-3 text-sm">
+    <a href="about.html" class="block py-1">About</a>
+    <div class="py-1 border-t mt-1">
+      <div class="font-semibold text-xs text-slate-500">Products</div>
+      <a href="straight-line-wipers.html" class="block pl-2 py-0.5">Straight Line</a>
+      <a href="pantograph-pendulum-wipers.html" class="block pl-2 py-0.5">Pantograph &amp; Pendulum</a>
+      <a href="wiper-controllers.html" class="block pl-2 py-0.5">Controllers</a>
+      <a href="wash-systems.html" class="block pl-2 py-0.5">Wash Systems</a>
+      <a href="clear-view-screens.html" class="block pl-2 py-0.5">Clear View Screens</a>
+      <a href="fire-fighting-systems.html" class="block pl-2 py-0.5">Fire Fighting Systems (FFS)</a>
+      <a href="alu-seating-rails.html" class="block pl-2 py-0.5">Alu Design Seating &amp; Rails</a>
+      <a href="solar-solve-shades.html" class="block pl-2 py-0.5">Solar Solve Shades</a>
+      <a href="nijhuis-pumps.html" class="block pl-2 py-0.5">Nijhuis Fire Pumps</a>
+    </div>
+    <a href="gallery.html" class="block py-1 border-t mt-1">Gallery</a>
+    <a href="resources.html" class="block py-1">Resources</a>
+    <a href="resources.html#dibbs" class="block py-1">DIBBS</a>
+    <a href="https://www.shipserv.com/supplier/profile/s/in-mar-solutions-61516" target="_blank" class="block py-1">ShipServ</a>
+    <a href="contact.html" class="block py-1">Contact</a>
+    <button onclick="openQuoteModal(); document.getElementById('mobile-menu').classList.add('hidden');" class="mt-2 w-full px-5 py-2 bg-sky-600 text-white text-sm font-semibold rounded-2xl">Request Quote</button>
+  </div>
 
   <!-- Hero with Slideshow as Background (using actual local hero images) -->
   <div id="hero" class="hero-bg relative h-[520px] md:h-[620px] flex items-center bg-slate-900 text-white overflow-hidden"
@@ -89,6 +116,11 @@
       <button onclick="prevHeroSlide()" class="w-9 h-9 flex items-center justify-center border border-white/40 rounded-full text-white/80 hover:bg-white/10"><i class="fa-solid fa-chevron-left text-sm"></i></button>
       <button onclick="nextHeroSlide()" class="w-9 h-9 flex items-center justify-center border border-white/40 rounded-full text-white/80 hover:bg-white/10"><i class="fa-solid fa-chevron-right text-sm"></i></button>
     </div>
+  </div>
+
+  <!-- Subtle full branding placement (large logo) - centered and sized nicely after hero (does not block slideshow) -->
+  <div class="max-w-5xl mx-auto px-6 pt-4 flex justify-center opacity-90">
+    <img src="assets/images/logos/inmarlogolarge.jpg" alt="In-Mar Systems & Solutions" class="h-20 md:h-24 w-auto">
   </div>
 
   <!-- Simple Products Overview -->
@@ -226,12 +258,6 @@
       document.documentElement.style.setProperty('--accent', '#0ea5e9');
     }
 
-    // Mobile menu
-    function toggleMobileMenu() {
-      const m = document.getElementById('mobile-menu');
-      m.classList.toggle('hidden');
-    }
-
     // Hero background slideshow (using the 18 curated photos as background)
     const heroImages = [
       "assets/images/hero-slideshow/IMG_1353ss.PNG",
@@ -295,30 +321,6 @@
       });
     }
 
-    // Quote modal
-    function openQuoteModal() {
-      const modal = document.getElementById('quote-modal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-    function closeQuoteModal() {
-      const modal = document.getElementById('quote-modal');
-      modal.classList.remove('flex');
-      modal.classList.add('hidden');
-    }
-    function handleQuoteSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      form.innerHTML = `
-        <div class="p-8 text-center">
-          <i class="fa-solid fa-check-circle text-emerald-500 text-4xl"></i>
-          <div class="font-semibold mt-4">Thank you — request received.</div>
-          <p class="text-sm text-slate-600 mt-2">A member of the In-Mar team will contact you within one business day.</p>
-          <button onclick="closeQuoteModal()" class="mt-5 px-6 py-2 text-sm border rounded-xl">Close</button>
-        </div>
-      `;
-    }
-
     // Keyboard for hero arrows (optional)
     document.addEventListener('keydown', function(e) {
       if (e.key === 'ArrowRight') nextHeroSlide();
@@ -332,5 +334,6 @@
 
     window.onload = init;
   </script>
+<script src="js/nav.js"></script>
 </body>
 </html>

@@ -1,86 +1,58 @@
-# In-Mar Systems — Redesign v2-simple (New Project)
+# In-Mar Systems — Static Site (inmar-redesign-v2-simple)
 
-**Status**: Fresh start in a completely separate folder/project (`inmar-redesign-v2-simple/`). The previous concept (in `inmar-fresh-start/`) is untouched and can be referenced or refined later.
+Professional, functional multi-page static website for In-Mar Systems / In-Mar Solutions. Zero build tools — pure HTML + Tailwind via CDN + Font Awesome + vanilla JS.
 
-**Live (after you push to a new repo)**: Your site is live at https://kg3924.github.io/inmar-redesign-v2-simple/
+## Current State
+- Fully consistent headers on every page:
+  - Top bar: "In-Mar Systems & Solutions • (225) 430-9111"
+  - Nav: small logo + two-line text stack ("In-Mar Systems" / "In-Mar Solutions") using the original logo font style, gap-x-8 nav items, single "Request Quote" button.
+  - Large `inmarlogolarge.jpg` placed appropriately per page (e.g. above Products list, dead-center absolute on gallery/resources).
+- Products dropdown is stable (hover persists with delay via shared JS).
+- Full mobile support everywhere: hamburger button + slide-in style #mobile-menu with complete navigation (all subpages + top level).
+- Gallery: master collection + three dedicated sub-galleries (wipergallery, ffsgallery, alugallery) as distinct sections. Photos open in clean full lightbox (no download/window). Anchor links to #master etc.
+- Resources: reorganized Catalogs/Data Sheets/References by logical categories (Wipers incl. straight/pant/pend + printable window data, Controllers, Wash, Clear View, FFS, Seating, Reference lists, etc.). DIBBS section with keyword search + type filters (derived from filenames), 2090/3030 prefix notes.
+- Product subpages: detailed blurbs + inline clickable brochures/specs next to relevant models (no giant bottom lists except where space-appropriate). FFS links to fifisystems.com.
+- Quote request modal (demo) available on every page via "Request Quote".
+- Window Data Submission Tool (interactive form that feeds structured data for quotes).
+- All assets local under `assets/` (images in logical subfolders, PDFs from original site organized by product type).
 
-## Goals (from feedback)
-- Functional site **first** — simple, fast, eye-catching, **no fluff**.
-- Small inspiration from the clean/professional layouts of fifisystems.com and b-hepworth.co.uk (trust, clear sections, product focus) without copying.
-- Address specific items:
-  1. Overall redesign (professional polish, remove uncentered notes, consistent clean experience).
-  2. Better DIBBS solution (product-organized, more searchable).
-  3. Online wiper sizing form (replaces the old manual-fill PDF datasheet with exact fields: Project/Vessel, Glass W/H, Qty, Voltage, A/R/X/T/I with explanations).
-  4. Practical home slideshow (prominent, curated 18 key/impressive photos only — click opens the full gallery with the remaining ~180+).
-  5. Assets managed locally and organized by original site page context where possible.
-  6. Open to best practices (kept zero-build static for speed/simplicity/cost).
+## Pages
+- `index.html` — Hero slideshow (curated 18 photos), trust signals, product teasers, Window Data Tool promo.
+- `products.html` — Overview + direct subpage links + wiper controller notes + footer links.
+- Subpages: straight-line-wipers, pantograph-pendulum-wipers, wiper-controllers, wash-systems, clear-view-screens, fire-fighting-systems, alu-seating-rails, solar-solve-shades, nijhuis-pumps.
+- `gallery.html` — Full master + separate product sub-galleries with filters and lightbox.
+- `resources.html` — News/press, DIBBS interactive table, categorized downloads.
+- `about.html`, `contact.html`, `window-data-submission-tool.html`.
 
-## What's New / Improved in This v2
-- **Home slideshow**: Prominent, high on the page (after trust bar), uses the 18 curated "ss" photos from your local downloads (full images visible — no cropping). Auto + manual controls. Click the area → full gallery.
-- **Full gallery**: Clean, caption-free (per requirements), categorized (wipers, fire-fighting, military, seating, vessels), filters, lightbox.
-- **Wiper tool** (products page): Real online form with *exactly* the fields from the old datasheet + explanations for A/R/X/T/I. Submits and prefills the main quote request with structured data.
-- **DIBBS**: Data now tagged by product (Wipers, Belts, Other). Sample PDFs downloaded locally into organized folders. Ready for product-based tabs/filters + "add to quote" actions.
-- **Assets**: 
-  - Logo local (`images/logos/inmar-tugboat-logo.png`).
-  - Hero slideshow photos: `images/hero-slideshow/` (your 18).
-  - Full gallery: `images/gallery/{fire-fighting,military,seating,vessels,wipers}/` (your 180+).
-  - PDFs: `images/pdfs/{dibbs/,products/wipers/,products/seating/}` — organized by the page they appeared on the original inmarsystems.com.
-- **Polish**: Clean top bar (no weird uncentered phone note), local assets, consistent nav (Gallery + DIBBS prominent), professional marine look.
-- Same proven stack (static HTML + Tailwind CDN + vanilla JS) → fast loads, easy to edit, zero cost.
+## Tech / How it works
+- Tailwind via CDN (no build step).
+- Shared helpers in `js/nav.js`: dropdown stabilizer (mouseenter/leave timers), mobile toggle, quote modal open/close/submit.
+- Masonry-style grids (CSS columns) for galleries.
+- Lightbox: simple fixed overlay with prev/next/esc/click-out.
+- All links and PDFs use exact local paths under assets/.
+- Responsive: desktop nav + independent mobile menu on every page.
 
-## Quick Start (Local)
-1. Open this `inmar-redesign-v2-simple` folder in VS Code.
-2. Install "Live Server" extension (if not already).
-3. Right-click `index.html` → **Open with Live Server**.
-4. Test:
-   - Home: prominent slideshow (curated photos), click it → gallery.
-   - Products: scroll to wiper tool → fill the form (including A/R/X/T/I) → it feeds the quote modal.
-   - Resources: DIBBS table (search + filters; some local PDFs).
-   - Gallery: full set, filters, clean lightbox (no text on images).
-   - Mobile: use DevTools device toolbar.
+## Local Development
+1. Open the `inmar-redesign-v2-simple` folder.
+2. Use any static server, e.g.:
+   - VS Code "Live Server" extension → right-click `index.html` → Open with Live Server.
+   - Or `python -m http.server` / `npx serve .`
+3. Test key flows: hover Products (stable), resize for mobile hamburger + full menu, open photos in gallery (lightbox), fill quote form, use Window Data tool, DIBBS search/filters, download brochures.
 
-All images/PDFs are local in this folder.
+## Deploy (GitHub Pages)
+1. Push to GitHub (this repo is already set up as `inmar-redesign-v2-simple`).
+2. In repo Settings → Pages → Source: Deploy from main branch (or GitHub Actions).
+3. Site will be available at `https://KG3924.github.io/inmar-redesign-v2-simple/`.
 
-## Key Files
-- `index.html` — Home with prominent curated slideshow + teasers.
-- `products.html` — Product info + the new **Wiper Sizing Tool** form.
-- `resources.html` — Enhanced DIBBS (product tags in data) + downloads.
-- `gallery.html` — Full organized gallery (caption-free).
-- `images/` — All assets organized (see subdirs above).
-- `images/pdfs/` — Downloaded specs/catalogs sorted by original site page.
+## Notes for Maintenance
+- Duplicate header/nav markup across files (common for pure static; update all when changing branding).
+- To add a new brochure: drop PDF in the appropriate `assets/pdfs/products/...` subfolder and add a link next to the model description.
+- Gallery photos: add to the relevant `assets/images/gallery/...` or product subgallery folders and update the JS arrays in gallery.html if needed.
+- Quote modal and nav behavior live in `js/nav.js` — changes there apply site-wide once script is included.
 
-## Asset Sourcing Notes (for future / resume)
-- Images: Your downloaded 187+ installation photos (categorized). Hero uses the "ss" subset you designated.
-- PDFs + logo: Pulled from public original site URLs and organized by the page they lived on (dibbs page, products/wipers, products/seating, etc.). See the subfolder names.
-- If you want more PDFs or specific product shots from the original site, give me the page or direct link and I'll generate/run the exact download commands (or do targeted ones).
+This version incorporates all polish feedback: uniform branding/headers, reliable dropdown + mobile, separate sub-galleries, properly sourced brochures, cleaned title areas, etc. Simple, fast, and ready for review or production static hosting.
 
-## Deployment (Separate Live Demo)
-1. Create a **new** GitHub repo (recommended name: `inmar-redesign-v2-simple` or similar) — this keeps the old concept repo + its live URL completely independent.
-2. In this folder: `git add . && git commit -m "Initial v2-simple: curated slideshow + wiper form + organized DIBBS + local assets"`
-3. Add remote + push (`git remote add origin YOUR_NEW_REPO_URL && git push -u origin main`).
-4. In the new repo Settings → Pages → Deploy from main branch (or GitHub Actions).
-5. Your new live URL will be something like https://KG3924.github.io/inmar-redesign-v2-simple/ (different from the old concept).
+## Asset Credits
+All images and PDFs are from the original In-Mar site / your downloads, organized locally for reliability (no hotlinking). 
 
-Both sites can be viewed side-by-side for comparison/feedback.
-
-## Next / Open Items (when you return with feedback)
-- Expand DIBBS UI to product tabs + "Add to quote" buttons (data is already tagged).
-- More PDFs or additional product images (tell me what/where).
-- Any copy/layout tweaks, more stats (inspired by FFS), seating link cleanup, etc.
-- Real form backend (Netlify Forms / Formspree — easy one-line change).
-- Compress/optimize the PNGs if load time matters in prod.
-- Anything else from leadership feedback.
-
-## Best Practices Applied (kept simple)
-- Functional > flashy.
-- Local assets (no fragile hotlinks).
-- Reused the solid patterns from v1 (DIBBS logic, gallery code, quote flow, slideshow) so we didn't start from zero.
-- Caption-free gallery per your explicit rule.
-- Self-documenting (this README + folder organization).
-- Zero build / fast / cheap.
-
-When you're back with feedback, just open this folder (or the new repo) and tell me what to change next. The old concept folder/repo is safe and untouched.
-
-Thanks — this gives you a clean, separate, professional-feeling functional demo focused on the real pain points (DIBBS usability + practical wiper quoting + usable visuals). 
-
-Ready for the next round!
+Ready to push!
